@@ -2,3 +2,5 @@
 # Welcome to Alteruna Multiplayer Documentation
 
 All relevant documents and guides can be found on our Wiki [here](https://github.com/Alteruna/au-multiplayer-docs/wiki).
+
+Alternatively you can view your HTML wiki [here](https://alteruna.github.io/au-multiplayer-api-docs).
