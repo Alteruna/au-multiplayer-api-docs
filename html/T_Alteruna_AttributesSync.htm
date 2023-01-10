@@ -16,30 +16,36 @@
              Parameters are easy to add, simply add them after the invocation method.
              Similar to how they are added in normal invocation.
             
-             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">public class PlayAudioSync : AttributesSync
+             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">public class MessageAll : AttributesSync
 {
     public void SendRpc()
     {
-        // default target is index 0.
-        BroadcastRemoteMethod(0, "Hello, world!");
+        // Invoke method by name. alternatively, we can call by index.
+        BroadcastRemoteMethod("Message", "Hello, world!");
     }
 
-    // We define our synced method here.
-    // As we only define one we know this one have index 0.
+    // the SynchronizableMethod attribute marks methods available for remote invocation.
     [SynchronizableMethod]
     private void Message(string msg)
     {
         Debug.Log(msg);
     }
-}</code></pre></div></div><div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">public class PlayAudioSync : AttributesSync
+}</code></pre></div></div>
+            
+             Note that only serializable objects can be passed as argument.
+            
+            	Here is a simple example for syncing audio play using <span class="code">BroadcastRemoteMethod</span>.
+             
+             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">public class PlayAudioSync : AttributesSync
 {
+    // reference to AudioSource.
     public AudioSource AudioSource;
 
+    // public method that we call in event or from external scripts
     public void Play()
     {
-        // default target is index 0.
-        InvokeRemoteMethod();
-        PlayRemote();
+        // Invoke method with index 0 on all clients including sender.
+        BroadcastRemoteMethod();
     }
 
     // We define our synced method here.
@@ -51,9 +57,31 @@
     }
 }</code></pre></div></div>
             
-            	Note that in InvokeRemoteMethod, the second argument is target(s) by ushort or ushort[].
-             
-             </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Constructors</h2><div id="IDBEASection"><table id="ConstructorList" class="table is-hoverable"><tr><td><a href="M_Alteruna_AttributesSync__ctor.htm">AttributesSync</a></td><td> </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Methods</h2><div id="IDDEASection"><table id="MethodList" class="table is-hoverable"><tr><td><a href="M_Alteruna_AttributesSync_BroadcastRemoteMethod.htm">BroadcastRemoteMethod(Int32, <span id="LSTC0AA725C_0" data-languageSpecificText="cpp=array&lt;"></span>Object<span id="LSTC0AA725C_1" data-languageSpecificText="cpp=&gt;|cs=[]|vb=()|nu=[]|fs=[]"></span>)</a></td><td>
+            	Using InvokeRemoteMethod, we can invoke RPC on one or more targets.
+             The following example shows how we can send private messages to specified user(s).
+            
+             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">public class Message : AttributesSync
+{
+    // id is index of user
+    public void SendMessageToUser(ushort id, string message)
+    {
+        // Invoke method by index.
+        InvokeRemoteMethod(0, id, message);
+    }
+
+    public void SendMessageToUser(ushort[] ids, string message)
+    {
+        // Invoke method by index.
+        InvokeRemoteMethod(0, ids, message);
+    }
+
+    // Because this is the first method defined, we know its index is 0. The net noe would have index of 1.
+    [SynchronizableMethod]
+    private void Message(string msg)
+    {
+        Debug.Log(msg);
+    }
+}</code></pre></div></div></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Constructors</h2><div id="IDBEASection"><table id="ConstructorList" class="table is-hoverable"><tr><td><a href="M_Alteruna_AttributesSync__ctor.htm">AttributesSync</a></td><td> </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Methods</h2><div id="IDDEASection"><table id="MethodList" class="table is-hoverable"><tr><td><a href="M_Alteruna_AttributesSync_BroadcastRemoteMethod.htm">BroadcastRemoteMethod(Int32, <span id="LSTC0AA725C_0" data-languageSpecificText="cpp=array&lt;"></span>Object<span id="LSTC0AA725C_1" data-languageSpecificText="cpp=&gt;|cs=[]|vb=()|nu=[]|fs=[]"></span>)</a></td><td>
             Calls method with the <span class="code">SynchronizableMethod</span> attribute on evey client including sender with given parameters.
             </td></tr><tr><td><a href="M_Alteruna_AttributesSync_BroadcastRemoteMethod_1.htm">BroadcastRemoteMethod(String, <span id="LSTC0AA725C_2" data-languageSpecificText="cpp=array&lt;"></span>Object<span id="LSTC0AA725C_3" data-languageSpecificText="cpp=&gt;|cs=[]|vb=()|nu=[]|fs=[]"></span>)</a></td><td>
             Calls method with the <span class="code">SynchronizableMethod</span> attribute on evey client including sender with given parameters.

@@ -5,74 +5,14 @@
             </td></tr><tr><td><a href="T_Alteruna_AttributesSync_SynchronizableMethod.htm">AttributesSync<span id="LST8356557C_1" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>SynchronizableMethod</a></td><td>
             Synchronise target Method.
             </td></tr><tr><td><a href="T_Alteruna_Avatar.htm">Avatar</a></td><td><span class="code">Avatar</span> is used to represent a player in a Room.
-             <h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Example</h2><div id="IDCGPCASection">
-            
-             Avatars have events that can be used similar to OnEnable and OnDisable.
-             The possession status can also be accessed with <span class="code">Avatar.IsPossessed</span><div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">// Avatar reference
-public Avatar MyAvatar;
-
-void Awake() {
-    // Event for avatar possessed
-    MyAvatar.OnPossessed.AddListener(Possessed);
-
-    // OnUnpossessed is called on unposses and client disconnect.
-}
-
-// Log username on Possession
-void Possessed(User user) =&gt; Debug.Log("Possessed by " + user.Name);</code></pre></div></div>
-            
-             When working with Avatars, the most useful information is to check for the controlled Avatar, this can be done using <span class="code">Avatar.IsMe</span>.
-             To make a fist person game, simply move the camera to the avatar with the <span class="code">Avatar.IsMe</span> set to true. See following example.
-             
-             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">public Avatar MyAvatar;
-
-void Awake() {
-    MyAvatar.OnPossessed.AddListener(Possessed);
-}
-
-void Possessed(User user) {
-    // Return if not user's client.
-    if (!user.IsMe) return;
-
-    // Set camera as child to object
-    Camera myCamera = Camera.main;
-    myCamera.transform.position = transform.position + new Vector3(0, 0.4f, 0);
-    myCamera.transform.SetParent(transform);
-
-    // Lock cursor
-    Cursor.lockState = CursorLockMode.Locked;
-    Cursor.visible = false;
-}</code></pre></div></div></div></td></tr><tr><td><a href="T_Alteruna_Bucket.htm">Bucket</a></td><td>
+             </td></tr><tr><td><a href="T_Alteruna_Bucket.htm">Bucket</a></td><td>
             Class <span class="code">Bucket</span> is a collection of players used to define NetLOD behaviour.
             </td></tr><tr><td><a href="T_Alteruna_BucketBehavior.htm">BucketBehavior</a></td><td> </td></tr><tr><td><a href="T_Alteruna_CommunicationBridge.htm">CommunicationBridge</a></td><td> </td></tr><tr><td><a href="T_Alteruna_CommunicationBridgeUID.htm">CommunicationBridgeUID</a></td><td>
             Holds references and methods for communications with active <span class="code">Multiplayer</span> and <span class="code">UID</span> components.
             </td></tr><tr><td><a href="T_Alteruna_Encryption.htm">Encryption</a></td><td> </td></tr><tr><td><a href="T_Alteruna_Endpoint.htm">Endpoint</a></td><td> </td></tr><tr><td><a href="T_Alteruna_InputSynchronizable.htm">InputSynchronizable</a></td><td>
             Synchronize inputs (255 buttons and 255 axis maximum)
             The input vales will update on this and other clients simultaneously.
-            <h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Example</h2><div id="IDBH5CASection">
-            Sync inputs and move transform based on those inputs.
-            Note that this does not sync position, after a while the positions could become unsynced.
-            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">using UnityEngine;
-using Alteruna;
-
-public class SyncedPlayerMovement : MonoBehaviour
-{
-    //reference to a InputSynchronizable object in the scene with a avatar.
-    public InputSynchronizable InputSync;
-    public float Speed = 5;
-
-    private void Start() {
-        InputSync.AddAxis(new[] {"Horizontal", "Vertical"});
-    }
-
-    private void Update() {
-        float scaledSpeed = Speed * Time.deltaTime;
-        transform.Translate(
-            scaledSpeed * InputSync.AxesValues[0],
-            scaledSpeed * InputSync.AxesValues[1],
-            0);
-    }
- }</code></pre></div></div></div></td></tr><tr><td><a href="T_Alteruna_InterpolationTransformSynchronizable.htm">InterpolationTransformSynchronizable</a></td><td> </td></tr><tr><td><a href="T_Alteruna_Multiplayer.htm">Multiplayer</a></td><td>
+            </td></tr><tr><td><a href="T_Alteruna_InterpolationTransformSynchronizable.htm">InterpolationTransformSynchronizable</a></td><td> </td></tr><tr><td><a href="T_Alteruna_Multiplayer.htm">Multiplayer</a></td><td>
             The component <span class="code">Multiplayer</span> gives access to all functionality and communication for Alteruna Multiplayer.
             </td></tr><tr><td><a href="T_Alteruna_NameGenerator.htm">NameGenerator</a></td><td>
             Class <span class="code">NameGenerator</span> generates names from a random animal and adjective.
@@ -86,7 +26,9 @@ public class SyncedPlayerMovement : MonoBehaviour
             Class <span class="code">Spawner</span> defines a component which can instantiate and destrot objects on all clients in the Room simultaneously.
             </td></tr><tr><td><a href="T_Alteruna_SyncedAxis.htm">SyncedAxis</a></td><td>
             Alternative way of implementing <span class="code">InputSynchronizable</span>.
-            </td></tr><tr><td><a href="T_Alteruna_SyncedKey.htm">SyncedKey</a></td><td> </td></tr><tr><td><a href="T_Alteruna_Synchronizable.htm">Synchronizable</a></td><td>
+            </td></tr><tr><td><a href="T_Alteruna_SyncedKey.htm">SyncedKey</a></td><td>
+             Alternative way of implementing <span class="code">InputSynchronizable</span>.
+             </td></tr><tr><td><a href="T_Alteruna_Synchronizable.htm">Synchronizable</a></td><td>
              Class <span class="code">Synchronizable</span> defines a base containing data to be synchronized with other clients in the Room.
              Synchronizable also support attributes, but unlike <span class="code">AttributesSync</span>, it does not auto commit changes in fields marked with the 
              </td></tr><tr><td><a href="T_Alteruna_Synchronizable_SynchronizableField.htm">Synchronizable<span id="LST8356557C_2" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>SynchronizableField</a></td><td>
@@ -120,7 +62,7 @@ public class SyncedPlayerMovement : MonoBehaviour
             Key behavior mode
             </td></tr><tr><td><a href="T_Alteruna_UserId.htm">UserId</a></td><td>
             User Indexes to target multiple users.
-            </td></tr></table></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Classes</a></li><li><a class="quickLink">Example</a></li><li><a class="quickLink">Example</a></li><li><a class="quickLink">Interfaces</a></li><li><a class="quickLink">Delegates</a></li><li><a class="quickLink">Enumerations</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div class="column"><p>Copyright © 2022 Alteruna AB</p> 
+            </td></tr></table></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Classes</a></li><li><a class="quickLink">Interfaces</a></li><li><a class="quickLink">Delegates</a></li><li><a class="quickLink">Enumerations</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div class="column"><p>Copyright © 2022 Alteruna AB</p> 
 				</div><div class="column"> 
 				</div></div></footer></div><script>$(function(){
 SetDefaultLanguage("cs");
@@ -134,5 +76,4 @@ $(".toggleSection" ).click(function () {
 $(".toggleSection").keypress(function () {
     SectionExpandCollapseCheckKey(this, event)
 });
-hljs.highlightAll();
 });</script></body></html>
