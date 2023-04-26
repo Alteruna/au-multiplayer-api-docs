@@ -30,6 +30,9 @@
             Invoke a Remote Procedure Call (RPC).
             </td></tr><tr><td><a href="M_Alteruna_Multiplayer_InvokeRemoteProcedure_1.htm">InvokeRemoteProcedure(String, UInt16, ProcedureParameters, ISerializable, Reliability, RemoteProcedureReply, RemoteProcedureAck)</a></td><td>
             Invoke a Remote Procedure Call (RPC).
+            </td></tr><tr><td><a href="M_Alteruna_Multiplayer_JoinFirstAvailable.htm">JoinFirstAvailable</a></td><td>
+            Join any available room.
+            Only join rooms that is not full, does not have pin code, and is not invite only.
             </td></tr><tr><td><a href="M_Alteruna_Multiplayer_JoinMatchmaking.htm">JoinMatchmaking<span id="LST55B0D0F2_4" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></a></td><td>
             Join a Room through matchmaking.
             </td></tr><tr><td><a href="M_Alteruna_Multiplayer_JoinMatchmaking_1.htm">JoinMatchmaking(UInt16)</a></td><td>
@@ -37,8 +40,9 @@
             </td></tr><tr><td><a href="M_Alteruna_Multiplayer_JoinOnDemandRoom.htm">JoinOnDemandRoom<span id="LST55B0D0F2_5" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></a></td><td>
             Create and Join a Room.
             The Room will close when the last player leaves the room.
+            Use <span class="code">CreateRoom</span> for more control.
             </td></tr><tr><td><a href="M_Alteruna_Multiplayer_JoinOnDemandRoom_1.htm">JoinOnDemandRoom(UInt32)</a></td><td>
-            Join Room by id, if it does not exist, create one and then join it.
+            Join Room by id.
             The Room will close when the last player leaves the room.
             </td></tr><tr><td><a href="M_Alteruna_Multiplayer_JoinRoom.htm">JoinRoom(Room)</a></td><td>
             Join an available Room.
