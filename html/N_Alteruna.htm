@@ -7,12 +7,20 @@
             </td></tr><tr><td><a href="T_Alteruna_Avatar.htm">Avatar</a></td><td><span class="code">Avatar</span> is used to represent a player in a Room.
              </td></tr><tr><td><a href="T_Alteruna_Bucket.htm">Bucket</a></td><td>
             Class <span class="code">Bucket</span> is a collection of players used to define NetLOD behaviour.
-            </td></tr><tr><td><a href="T_Alteruna_BucketBehavior.htm">BucketBehavior</a></td><td> </td></tr><tr><td><a href="T_Alteruna_CommunicationBridge.htm">CommunicationBridge</a></td><td> </td></tr><tr><td><a href="T_Alteruna_CommunicationBridgeUID.htm">CommunicationBridgeUID</a></td><td>
+            </td></tr><tr><td><a href="T_Alteruna_BucketBehavior.htm">BucketBehavior</a></td><td>
+            Behavior of a LOD bucket.
+            </td></tr><tr><td><a href="T_Alteruna_CommunicationBridge.htm">CommunicationBridge</a></td><td> </td></tr><tr><td><a href="T_Alteruna_CommunicationBridgeUID.htm">CommunicationBridgeUID</a></td><td>
             Holds references and methods for communications with active <span class="code">Multiplayer</span> and <span class="code">UID</span> components.
-            </td></tr><tr><td><a href="T_Alteruna_Encryption.htm">Encryption</a></td><td> </td></tr><tr><td><a href="T_Alteruna_Endpoint.htm">Endpoint</a></td><td> </td></tr><tr><td><a href="T_Alteruna_InputSynchronizable.htm">InputSynchronizable</a></td><td>
+            </td></tr><tr><td><a href="T_Alteruna_Encryption.htm">Encryption</a></td><td>
+            Simple encryption that does not make increase the size of the data transmitted.
+            </td></tr><tr><td><a href="T_Alteruna_Endpoint.htm">Endpoint</a></td><td>
+            Device endpoint.
+            </td></tr><tr><td><a href="T_Alteruna_InputSynchronizable.htm">InputSynchronizable</a></td><td>
             Synchronize inputs (255 buttons and 255 axis maximum)
             The input vales will update on this and other clients simultaneously.
-            </td></tr><tr><td><a href="T_Alteruna_InterpolationTransformSynchronizable.htm">InterpolationTransformSynchronizable</a></td><td> </td></tr><tr><td><a href="T_Alteruna_Multiplayer.htm">Multiplayer</a></td><td>
+            </td></tr><tr><td><a href="T_Alteruna_InterpolationTransformSynchronizable.htm">InterpolationTransformSynchronizable</a></td><td>
+            Interpolate transform position and rotation using selected interpolation method.
+            </td></tr><tr><td><a href="T_Alteruna_Multiplayer.htm">Multiplayer</a></td><td>
             The component <span class="code">Multiplayer</span> gives access to all functionality and communication for Alteruna Multiplayer.
             </td></tr><tr><td><a href="T_Alteruna_NameGenerator.htm">NameGenerator</a></td><td>
             Class <span class="code">NameGenerator</span> generates names from a random animal and adjective.
@@ -23,7 +31,14 @@
             </td></tr><tr><td><a href="T_Alteruna_Rigidbody2DSynchronizable.htm">Rigidbody2DSynchronizable</a></td><td><span class="code">Rigidbody2DSynchronizable</span> is a <span class="code">Synchronizable</span> that synchronizes the state of a <span class="code">Rigidbody2D</span> component.
             </td></tr><tr><td><a href="T_Alteruna_RigidbodySynchronizable.htm">RigidbodySynchronizable</a></td><td>
             Control and synchronizes an object's position through physics simulation.
-            </td></tr><tr><td><a href="T_Alteruna_Room.htm">Room</a></td><td> </td></tr><tr><td><a href="T_Alteruna_Service.htm">Service</a></td><td> </td></tr><tr><td><a href="T_Alteruna_ServiceState.htm">ServiceState</a></td><td> </td></tr><tr><td><a href="T_Alteruna_Spawner.htm">Spawner</a></td><td>
+            </td></tr><tr><td><a href="T_Alteruna_Room.htm">Room</a></td><td>
+            The <span class="code">Room</span> class defines a room in the network.
+            Users can join and leave rooms and send data to all other users in the same room.
+            </td></tr><tr><td><a href="T_Alteruna_Service.htm">Service</a></td><td>
+            Alteruna service class.
+            </td></tr><tr><td><a href="T_Alteruna_ServiceState.htm">ServiceState</a></td><td>
+            Handle states and events for alternate service.
+            </td></tr><tr><td><a href="T_Alteruna_Spawner.htm">Spawner</a></td><td>
             Class <span class="code">Spawner</span> defines a component which can instantiate and destroy objects on all clients in the Room simultaneously.
             </td></tr><tr><td><a href="T_Alteruna_SyncedAxis.htm">SyncedAxis</a></td><td>
             Alternative way of implementing <span class="code">InputSynchronizable</span>.
@@ -36,7 +51,9 @@
             Synchronise target field.
             </td></tr><tr><td><a href="T_Alteruna_Synchronizable_SynchronizableMethod.htm">Synchronizable<span id="LST8356557C_3" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>SynchronizableMethod</a></td><td>
             Synchronise target Method.
-            </td></tr><tr><td><a href="T_Alteruna_SynchronizableCommon.htm">SynchronizableCommon</a></td><td> </td></tr><tr><td><a href="T_Alteruna_SynchronizableCommon_RigidbodySynchronizableCommon.htm">SynchronizableCommon<span id="LST8356557C_4" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>RigidbodySynchronizableCommon</a></td><td>
+            </td></tr><tr><td><a href="T_Alteruna_SynchronizableCommon.htm">SynchronizableCommon</a></td><td>
+            Contains common classes for synchronizables that should not be used directly used in a Unity project.
+            </td></tr><tr><td><a href="T_Alteruna_SynchronizableCommon_RigidbodySynchronizableCommon.htm">SynchronizableCommon<span id="LST8356557C_4" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>RigidbodySynchronizableCommon</a></td><td>
             Common Rigidbody synchronizable methods and.
             </td></tr><tr><td><a href="T_Alteruna_TransformSynchronizable.htm">TransformSynchronizable</a></td><td>
             Class <span class="code">TransformSynchronizable</span> defines a component which synchronizes its game objects transform with other clients in the Playroom.
@@ -63,9 +80,30 @@
             Class <span class="code">Reader</span> is used to read data recieved from another User.
             </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Interfaces</h2><div id="IDCCASection"><table id="interfaceList" class="table is-hoverable"><tr><td><a href="T_Alteruna_IAdaptiveSerializableUniqueID.htm">IAdaptiveSerializableUniqueID</a></td><td>
             Combines the IAdaptiveSerializable and the IUniqueID interface.
-            </td></tr><tr><td><a href="T_Alteruna_IInput.htm">IInput</a></td><td> </td></tr><tr><td><a href="T_Alteruna_IServiceListener.htm">IServiceListener</a></td><td> </td></tr><tr><td><a href="T_Alteruna_IServiceStateListener.htm">IServiceStateListener</a></td><td> </td></tr><tr><td><a href="T_Alteruna_IUniqueID.htm">IUniqueID</a></td><td>
-            Class <span class="code">UniqueID</span> defines an application-wide unique ID for identifying objects to be synced between Users in a Room.
-            </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Delegates</h2><div id="IDICASection"><table id="delegateList" class="table is-hoverable"><tr><td><a href="T_Alteruna_RemoteProcedure.htm">RemoteProcedure</a></td><td> </td></tr><tr><td><a href="T_Alteruna_RemoteProcedureAck.htm">RemoteProcedureAck</a></td><td> </td></tr><tr><td><a href="T_Alteruna_RemoteProcedureReply.htm">RemoteProcedureReply</a></td><td> </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Enumerations</h2><div id="IDECASection"><table id="enumerationList" class="table is-hoverable"><tr><td><a href="T_Alteruna_AttributesSync_LocalBehavior.htm">AttributesSync<span id="LST8356557C_5" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>LocalBehavior</a></td><td> </td></tr><tr><td><a href="T_Alteruna_AvatarBehavior.htm">AvatarBehavior</a></td><td> </td></tr><tr><td><a href="T_Alteruna_InterpolationTransformSynchronizable_InterpolationMethodType.htm">InterpolationTransformSynchronizable<span id="LST8356557C_6" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>InterpolationMethodType</a></td><td> </td></tr><tr><td><a href="T_Alteruna_InterpolationTransformSynchronizable_LocalBehaviourType.htm">InterpolationTransformSynchronizable<span id="LST8356557C_7" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>LocalBehaviourType</a></td><td> </td></tr><tr><td><a href="T_Alteruna_SyncedKey_KeyMode.htm">SyncedKey<span id="LST8356557C_8" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>KeyMode</a></td><td>
+            </td></tr><tr><td><a href="T_Alteruna_IInput.htm">IInput</a></td><td>
+            Alteruna Input interface.
+            Can be used to create a custom synced input system.
+            </td></tr><tr><td><a href="T_Alteruna_IServiceListener.htm">IServiceListener</a></td><td>
+            Service event listener interface.
+            </td></tr><tr><td><a href="T_Alteruna_IServiceStateListener.htm">IServiceStateListener</a></td><td>
+            Service state event listener interface.
+            </td></tr><tr><td><a href="T_Alteruna_IUniqueID.htm">IUniqueID</a></td><td>
+            Class <span class="code">UniqueID</span> defines an application-wide unique ID for identifying objects deciding where to rout data in a Room.
+            </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Delegates</h2><div id="IDKCASection"><table id="delegateList" class="table is-hoverable"><tr><td><a href="T_Alteruna_RemoteProcedure.htm">RemoteProcedure</a></td><td>
+            RPC delegate.
+            </td></tr><tr><td><a href="T_Alteruna_RemoteProcedureAck.htm">RemoteProcedureAck</a></td><td>
+            RPC ack delegate.
+            </td></tr><tr><td><a href="T_Alteruna_RemoteProcedureReply.htm">RemoteProcedureReply</a></td><td>
+            RPC reply delegate.
+            </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Enumerations</h2><div id="IDECASection"><table id="enumerationList" class="table is-hoverable"><tr><td><a href="T_Alteruna_AttributesSync_LocalBehavior.htm">AttributesSync<span id="LST8356557C_5" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>LocalBehavior</a></td><td>
+            Behaviour of local invocation of remote methods.
+            </td></tr><tr><td><a href="T_Alteruna_AvatarBehavior.htm">AvatarBehavior</a></td><td>
+            Behavior for avatar spawning.
+            </td></tr><tr><td><a href="T_Alteruna_InterpolationTransformSynchronizable_InterpolationMethodType.htm">InterpolationTransformSynchronizable<span id="LST8356557C_6" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>InterpolationMethodType</a></td><td>
+            Methods for interpolate, extrapolate, and other.
+            </td></tr><tr><td><a href="T_Alteruna_InterpolationTransformSynchronizable_LocalBehaviourType.htm">InterpolationTransformSynchronizable<span id="LST8356557C_7" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>LocalBehaviourType</a></td><td>
+            Behavior of how to polate transform locally.
+            </td></tr><tr><td><a href="T_Alteruna_SyncedKey_KeyMode.htm">SyncedKey<span id="LST8356557C_8" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>KeyMode</a></td><td>
             Key behavior mode
             </td></tr><tr><td><a href="T_Alteruna_UserId.htm">UserId</a></td><td>
             User Indexes to target multiple users.
