@@ -8,46 +8,48 @@
             An indexed list of the locations at which to spawn Avatars.
             </td></tr><tr><td><a href="F_Alteruna_Multiplayer_Buckets.htm">Buckets</a></td><td>
             A list containing all of the existing Buckets in the application.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_Connected.htm">Connected</a></td><td>
-            Event invoked after successfully connecting to a server.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_Disconnected.htm">Disconnected</a></td><td>
-            Event invoked after disconnecting from a server.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_ForceSynced.htm">ForceSynced</a></td><td>
-            Forced synced event.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_JoinRejected.htm">JoinRejected</a></td><td>
-            Event invoked on join event rejected with a rejection reason.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_LockAquired.htm">LockAquired</a></td><td>
-            Event invoked when successfully receives ownership for any object.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_LockDenied.htm">LockDenied</a></td><td>
-            Event invoked when an attempt to gain ownership over a object is denied.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_LockRequested.htm">LockRequested</a></td><td>
-            Event invoked on ownership requests.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_LockUnlocked.htm">LockUnlocked</a></td><td>
-            Event invoked when a object releases its ownership.
             </td></tr><tr><td><a href="F_Alteruna_Multiplayer_LogLevel.htm">LogLevel</a></td><td>
             The lowest level of logs to print to the console.
             </td></tr><tr><td><a href="F_Alteruna_Multiplayer_MaxPlayers.htm">MaxPlayers</a></td><td>
             The maximum amount of players allowed in a single Room.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_NetworkError.htm">NetworkError</a></td><td>
-            Event invoked if any network related errors occur.
             </td></tr><tr><td><a href="F_Alteruna_Multiplayer_NetworkPrefs.htm">NetworkPrefs</a></td><td>
             Similar to Unity's PlayerPrefs, but stores data in the cloud.
             It is recommended to use its asynchronous methods.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OtherUserJoined.htm">OtherUserJoined</a></td><td>
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnConnected.htm">OnConnected</a></td><td> </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnDisconnected.htm">OnDisconnected</a></td><td>
+            Event invoked after disconnecting from a server.
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnForceSynced.htm">OnForceSynced</a></td><td>
+            On client request a force sync package.
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnJoinRejected.htm">OnJoinRejected</a></td><td>
+            Event invoked on join event rejected with a rejection reason.
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnLockAcquired.htm">OnLockAcquired</a></td><td>
+            Event invoked when successfully receives ownership for any object.
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnLockDenied.htm">OnLockDenied</a></td><td>
+            Event invoked when an attempt to gain ownership over a object is denied.
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnLockRequested.htm">OnLockRequested</a></td><td>
+            Event invoked on ownership requests.
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnLockUnlocked.htm">OnLockUnlocked</a></td><td>
+            Event invoked when a object releases its ownership.
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnNetworkError.htm">OnNetworkError</a></td><td>
+            Event invoked if any network related errors occur.
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnOtherUserJoined.htm">OnOtherUserJoined</a></td><td>
             Event invoked when other User joined the Room.
             When joining a room, this event will be invoked for every User already in the Room.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OtherUserLeft.htm">OtherUserLeft</a></td><td>
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnOtherUserLeft.htm">OnOtherUserLeft</a></td><td>
             Event invoked after another User left the Room.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_PacketReceived.htm">PacketReceived</a></td><td>
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnPacketReceived.htm">OnPacketReceived</a></td><td>
             Receive packet event.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_PacketSent.htm">PacketSent</a></td><td>
-            Send packet event.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_RoomJoined.htm">RoomJoined</a></td><td>
-            Event invoked after successfully joining a Room.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_RoomLeft.htm">RoomLeft</a></td><td>
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnPacketSent.htm">OnPacketSent</a></td><td> </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnRoomJoined.htm">OnRoomJoined</a></td><td> </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnRoomLeft.htm">OnRoomLeft</a></td><td>
             Event invoked on successfully leaving a room.
-            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_RoomListUpdated.htm">RoomListUpdated</a></td><td>
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnRoomListUpdated.htm">OnRoomListUpdated</a></td><td>
             Event invoked when the AvailableRooms list is modified.
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnRpcReceived.htm">OnRpcReceived</a></td><td>
+            On remote procedure call received.
+            Multiplayer, name, sender
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnRpcRegistered.htm">OnRpcRegistered</a></td><td>
+            On remote procedure call registered.
+            </td></tr><tr><td><a href="F_Alteruna_Multiplayer_OnRpcSent.htm">OnRpcSent</a></td><td>
+            On remote procedure call sent.
+            Multiplayer, name, target, isMulticast
             </td></tr><tr><td><a href="F_Alteruna_Multiplayer_SpawnAvatarPerIndex.htm">SpawnAvatarPerIndex</a></td><td>
             Weather Avatars should be spawned in different locations based on their index in the Room.
             </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>See Also</h2><div id="seeAlsoSection"><h4>Reference</h4><div><a href="T_Alteruna_Multiplayer.htm">Multiplayer Class</a></div><div><a href="N_Alteruna.htm">Alteruna Namespace</a></div></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Fields</a></li><li><a class="quickLink">See Also</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div class="column"><p>Copyright © 2022 Alteruna AB</p> 

@@ -11,8 +11,10 @@
             Behavior of a LOD bucket.
             </td></tr><tr><td><a href="T_Alteruna_CommunicationBridge.htm">CommunicationBridge</a></td><td>
             Holds references and methods for communications with active <span class="code">Multiplayer</span> component.
+            Unlike <span class="code">CommunicationBridgeUID</span>, this component does not have a unique identifier (UID).
             </td></tr><tr><td><a href="T_Alteruna_CommunicationBridgeUID.htm">CommunicationBridgeUID</a></td><td>
             Holds references and methods for communications with active <span class="code">Multiplayer</span> and <span class="code">UID</span> components.
+            Can be used to as object reference when sending packages to other clients.
             </td></tr><tr><td><a href="T_Alteruna_Encryption.htm">Encryption</a></td><td>
             Simple encryption that does not make increase the size of the data transmitted.
             </td></tr><tr><td><a href="T_Alteruna_Endpoint.htm">Endpoint</a></td><td>
@@ -43,8 +45,8 @@
             </td></tr><tr><td><a href="T_Alteruna_Spawner.htm">Spawner</a></td><td>
             Class <span class="code">Spawner</span> defines a component which can instantiate and destroy objects on all clients in the Room simultaneously.
             </td></tr><tr><td><a href="T_Alteruna_SyncedAxis.htm">SyncedAxis</a></td><td>
-            Alternative way of implementing <span class="code">InputSynchronizable</span>.
-            </td></tr><tr><td><a href="T_Alteruna_SyncedKey.htm">SyncedKey</a></td><td>
+             Alternative way of implementing <span class="code">InputSynchronizable</span>.
+             </td></tr><tr><td><a href="T_Alteruna_SyncedKey.htm">SyncedKey</a></td><td>
              Alternative way of implementing <span class="code">InputSynchronizable</span>.
              </td></tr><tr><td><a href="T_Alteruna_Synchronizable.htm">Synchronizable</a></td><td>
              Class <span class="code">Synchronizable</span> defines a base containing data to be synchronized with other clients in the Room.
@@ -70,7 +72,7 @@
             Class <span class="code">UnityLog</span> is responsible for logging internal messages and events. 
             </td></tr><tr><td><a href="T_Alteruna_UnityReader.htm">UnityReader</a></td><td>
             Class <span class="code">UnityReader</span> is used to write Unity types to a <span class="code">Reader</span>.
-            </td></tr><tr><td><a href="T_Alteruna_UnityWriter.htm">UnityWriter</a></td><td>
+            </td></tr><tr><td><a href="T_Alteruna_UnityWebRequestExtension.htm">UnityWebRequestExtension</a></td><td> </td></tr><tr><td><a href="T_Alteruna_UnityWriter.htm">UnityWriter</a></td><td>
             Class <span class="code">UnityWriter</span> is used to write Unity types to a <span class="code">Writer</span>.
             </td></tr><tr><td><a href="T_Alteruna_User.htm">User</a></td><td>
             User class containing index and name.
@@ -78,6 +80,8 @@
             Useful time related fields using global time.
             Note that its its common for the system time to be inaccurate, expect a difference by 5 seconds.
             If the machine time is not automatically updated, it can be up to much more.
+            </td></tr><tr><td><a href="T_Alteruna_VoiceSynchronizable.htm">VoiceSynchronizable</a></td><td>
+            Synchronizable component for voice chat.
             </td></tr><tr><td><a href="T_Alteruna_Writer.htm">Writer</a></td><td>
             Class <span class="code">Reader</span> is used to read data recieved from another User.
             </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Interfaces</h2><div id="IDCCASection"><table id="interfaceList" class="table is-hoverable"><tr><td><a href="T_Alteruna_IAdaptiveSerializableUniqueID.htm">IAdaptiveSerializableUniqueID</a></td><td>
@@ -109,6 +113,8 @@
             Key behavior mode
             </td></tr><tr><td><a href="T_Alteruna_UserId.htm">UserId</a></td><td>
             User Indexes to target multiple users.
+            </td></tr><tr><td><a href="T_Alteruna_VoiceSynchronizable_EncryptionType.htm">VoiceSynchronizable<span id="LST8356557C_9" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>EncryptionType</a></td><td>
+            Encoding types for data compression.
             </td></tr></table></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Classes</a></li><li><a class="quickLink">Interfaces</a></li><li><a class="quickLink">Delegates</a></li><li><a class="quickLink">Enumerations</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div class="column"><p>Copyright © 2022 Alteruna AB</p> 
 				</div><div class="column"> 
 				</div></div></footer></div><script>$(function(){
