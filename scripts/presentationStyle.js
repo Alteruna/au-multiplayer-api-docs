@@ -581,22 +581,45 @@ function ParseKeywords(keywords)
     return keywordList;
 }
 
+function matchCount(a, b) {
+
+	let la = a.length;
+	let lb = b.length;
+
+	if (la < lb) return matchCount(b, a);
+
+	let matchingCharacters = 0;
+	la -= lb;
+
+	for (let i = 0; i < la; i++) {
+		let match = 0;
+		for (let k = 0; k < lb; k++) { 
+			if (a[i+k] === b[k]) {
+				match++
+			} else {
+				break;
+			}
+		}
+		if (match.length === lb) {
+			return lb;
+		}
+		matchingCharacters = Math.max(matchingCharacters, match);
+	}
+	return matchingCharacters;
+}
+
 function similarityScore(a, b) {
-    let matchingCharacters = 0;
-	let l = Math.min(a.length, b.length);
-    for (let i = 0; i < l; i++) {
-        if (a[i] === b[i]) {
-            matchingCharacters++;
-        }
-    }
-    return matchingCharacters / Math.max(a.length, b.length);
+
+	let matchingCharacters = matchCount(a, b);
+	let m = Math.max(a.length, b.length);
+	return (matchingCharacters * matchingCharacters) / m;
 }
 
 function SearchForKeywords(keywords, fileInfo)
 {
 	var rankings = [];
 	var idx;
-	var minMatch = 0.01;
+	var minMatch = 0.05;
 
 	var l = fileInfo.length;
 
