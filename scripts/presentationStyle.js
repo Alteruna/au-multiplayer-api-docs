@@ -407,7 +407,6 @@ function OnSearchPageLoad()
 function PerformSearch()
 {
     var searchText = document.getElementById("txtSearchText").value;
-    var sortByTitle = document.getElementById("chkSortByTitle").checked;
     var searchResults = document.getElementById("searchResults");
 
     if(searchText.length === 0)
@@ -428,7 +427,7 @@ function PerformSearch()
     {
         $.ajax({
             type: "GET",
-            url: encodeURI("SearchHelp.aspx?Keywords=" + searchText + "&SortByTitle=" + sortByTitle),
+            url: encodeURI("SearchHelp.aspx?Keywords=" + searchText),
             cache: false,
             success: function (html)
             {
@@ -443,7 +442,7 @@ function PerformSearch()
     {
         $.ajax({
             type: "GET",
-            url: encodeURI("SearchHelp.php?Keywords=" + searchText + "&SortByTitle=" + sortByTitle),
+            url: encodeURI("SearchHelp.php?Keywords=" + searchText),
             cache: false,
             success: function (html)
             {
@@ -475,6 +474,7 @@ function PerformSearch()
         }
     });
 
+	/*
     var letters = [];
     var wordDictionary = {};
     var wordNotFound = false;
@@ -510,11 +510,12 @@ function PerformSearch()
             });
         }
     }
+	*/
 
     if(wordNotFound)
         searchResults.innerHTML = "<strong>Nothing found</strong>";
     else
-        searchResults.innerHTML = SearchForKeywords(keywords, fileList, wordDictionary, sortByTitle);
+        searchResults.innerHTML = SearchForKeywords(keywords, fileList);
 }
 
 // Determine the search method by seeing if the ASPX or PHP search pages are present and working
@@ -580,107 +581,85 @@ function ParseKeywords(keywords)
     return keywordList;
 }
 
-// Search for keywords and generate a block of HTML containing the results
-function SearchForKeywords(keywords, fileInfo, wordDictionary, sortByTitle)
+function similarityScore(a, b) {
+    let matchingCharacters = 0;
+	let l = Math.min(a.length, b.length);
+    for (let i = 0; i < l; i++) {
+        if (a[i] === b[i]) {
+            matchingCharacters++;
+        }
+    }
+    return matchingCharacters / Math.max(a.length, b.length);
+}
+
+function SearchForKeywords(keywords, fileInfo)
 {
-    var matches = [], matchingFileIndices = [], rankings = [];
-    var isFirst = true;
-    var idx;
+	var rankings = [];
+	var idx;
+	var minMatch = 0.01;
 
-    for(idx = 0; idx < keywords.length; idx++)
-    {
-        var word = keywords[idx];
-        var occurrences = wordDictionary[word];
+	var l = fileInfo.length;
 
-        // All keywords must be found
-        if(occurrences === null)
-            return "<strong>Nothing found</strong>";
+	for(idx = 0; idx < keywords.length; idx++)
+	{
+		keywords[idx] = keywords[idx].toLowerCase();
+	}
 
-        matches[word] = occurrences;
-        var occurrenceIndices = [];
+	// Rank the files based on the number of times the words occurs
+	for(var fileIdx = 0; fileIdx < l; fileIdx++)
+	{
+		// Split out the title, filename, and word count
+		var fileIndex = fileInfo[fileIdx].split(/\0/);
 
-        // Get a list of the file indices for this match.  These are 64-bit numbers but JavaScript only does
-        // bit shifts on 32-bit values so we divide by 2^16 to get the same effect as ">> 16" and use floor()
-        // to truncate the result.
-        for(var ind in occurrences)
-            occurrenceIndices.push(Math.floor(occurrences[ind] / Math.pow(2, 16)));
+		var title = fileIndex[0];
+		var titleLower = title.toLowerCase();
+		var filename = fileIndex[1];
+		var match = 0;
 
-        if(isFirst)
-        {
-            isFirst = false;
+		for(idx = 0; idx < keywords.length; idx++)
+		{
+			match += similarityScore(titleLower, keywords[idx])
+		}
 
-            for(var matchInd in occurrenceIndices)
-                matchingFileIndices.push(occurrenceIndices[matchInd]);
-        }
-        else
-        {
-            // After the first match, remove files that do not appear for all found keywords
-            for(var checkIdx = 0; checkIdx < matchingFileIndices.length; checkIdx++)
-            {
-                if($.inArray(matchingFileIndices[checkIdx], occurrenceIndices) === -1)
-                {
-                    matchingFileIndices.splice(checkIdx, 1);
-                    checkIdx--;
-                }
-            }
-        }
-    }
+		if (match < minMatch) continue;
 
-    if(matchingFileIndices.length === 0)
-        return "<strong>Nothing found</strong>";
+		//if (titleLower.substring(titleLower.length - 5) === "class") match += 0.01;
 
-    // Rank the files based on the number of times the words occurs
-    for(var fileIdx = 0; fileIdx < matchingFileIndices.length; fileIdx++)
-    {
-        // Split out the title, filename, and word count
-        var matchingIdx = matchingFileIndices[fileIdx];
-        var fileIndex = fileInfo[matchingIdx].split(/\0/);
+		rankings.push({ Filename: filename, PageTitle: title, Rank: match });
+	}
 
-        var title = fileIndex[0];
-        var filename = fileIndex[1];
-        var wordCount = parseInt(fileIndex[2]);
-        var matchCount = 0;
+	if(rankings.length === 0)
+	return "<strong>Nothing found</strong>";
 
-        for(idx = 0; idx < keywords.length; idx++)
-        {
-            occurrences = matches[keywords[idx]];
+	var ommited = 0;
 
-            for(var ind2 in occurrences)
-            {
-                var entry = occurrences[ind2];
+	while(rankings.length > 100) {
+		minMatch += 0.075;
+		for(var i = 0; i < rankings.length; i++) {
+			if(rankings[i].Rank < minMatch) {
+				rankings.splice(i, 1);
+				ommited++;
+				i--;
+			}
+		}
+	}
 
-                // These are 64-bit numbers but JavaScript only does bit shifts on 32-bit values so we divide
-                // by 2^16 to get the same effect as ">> 16" and use floor() to truncate the result.
-                if(Math.floor(entry / Math.pow(2, 16)) === matchingIdx)
-                    matchCount += (entry & 0xFFFF);
-            }
-        }
+	rankings.sort(function (x, y)
+	{
+		return y.Rank - x.Rank;
+	});
 
-        rankings.push({ Filename: filename, PageTitle: title, Rank: matchCount * 1000 / wordCount });
+	// Format and return the results
+	var content = "<ol>";
 
-        if(rankings.length > 99)
-            break;
-    }
+	for(var r in rankings)
+		content += "<li><a href=\"" + rankings[r].Filename + "\" target=\"_blank\">" +
+			rankings[r].PageTitle + "</a></li>";
 
-    rankings.sort(function (x, y)
-    {
-        if(!sortByTitle)
-            return y.Rank - x.Rank;
+	content += "</ol>";
 
-        return x.PageTitle.localeCompare(y.PageTitle);
-    });
+	if(ommited > 0)
+		content += "<p>Omitted " + ommited + " more results</p>";
 
-    // Format and return the results
-    var content = "<ol>";
-
-    for(var r in rankings)
-        content += "<li><a href=\"" + rankings[r].Filename + "\" target=\"_blank\">" +
-            rankings[r].PageTitle + "</a></li>";
-
-    content += "</ol>";
-
-    if(rankings.length < matchingFileIndices.length)
-        content += "<p>Omitted " + (matchingFileIndices.length - rankings.length) + " more results</p>";
-
-    return content;
+	return content;
 }
