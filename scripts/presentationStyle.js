@@ -510,11 +510,11 @@ function PerformSearch()
             });
         }
     }
-	*/
 
     if(wordNotFound)
         searchResults.innerHTML = "<strong>Nothing found</strong>";
     else
+	*/
         searchResults.innerHTML = SearchForKeywords(keywords, fileList);
 }
 
