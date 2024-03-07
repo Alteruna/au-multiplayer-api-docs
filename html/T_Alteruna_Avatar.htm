@@ -36,7 +36,7 @@ void Possessed(User user) {
     // Lock cursor
     Cursor.lockState = CursorLockMode.Locked;
     Cursor.visible = false;
-}</code></pre></div></div></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Properties</h2><div id="IDHEASection"><table id="PropertyList" class="table is-hoverable"><tr><td><a href="P_Alteruna_Avatar_IsMe.htm">IsMe</a></td><td>
+}</code></pre></div></div></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Properties</h2><div id="IDJEASection"><table id="PropertyList" class="table is-hoverable"><tr><td><a href="P_Alteruna_Avatar_IsMe.htm">IsMe</a></td><td>
             True when the <span class="code">Avatar</span> represents the local player.
             </td></tr><tr><td><a href="P_Alteruna_Avatar_IsOwner.htm">IsOwner</a></td><td>
             True when the <span class="code">Avatar</span> represents the local player.
@@ -44,12 +44,16 @@ void Possessed(User user) {
             Null when unprocessed.
             </td></tr><tr><td><a href="P_Alteruna_Avatar_Possessor.htm">Possessor</a></td><td><span class="code">User</span> that posses the <span class="code">Avatar</span>.
             Null when unprocessed.
-            </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Methods</h2><div id="IDEEASection"><table id="MethodList" class="table is-hoverable"><tr><td><a href="M_Alteruna_Avatar_Serialize.htm">Serialize</a></td><td>
+            </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Methods</h2><div id="IDFEASection"><table id="MethodList" class="table is-hoverable"><tr><td><a href="M_Alteruna_Avatar_Possessed.htm">Possessed(User)</a></td><td>
+            The possessed method can be used to set owner of a avatar.
+            </td></tr><tr><td><a href="M_Alteruna_Avatar_Possessed_1.htm">Possessed(Boolean, User)</a></td><td>
+            The possessed method can be used to set owner of a avatar.
+            <br />(Overrides <a href="M_Alteruna_CommunicationBridge_Possessed.htm">CommunicationBridge<span id="LST41B3411A_0" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>Possessed(Boolean, User)</a>)</td></tr><tr><td><a href="M_Alteruna_Avatar_Serialize.htm">Serialize</a></td><td>
             Serializes transform and synchronizables.
             </td></tr><tr><td><a href="M_Alteruna_Avatar_ToString.htm">ToString</a></td><td>
             Get name and index in a string.
             Returns "Unprocessed" when IsPossessed is false.
-            <br />(Overrides <span class="noLink">Object.ToString<span id="LST41B3411A_0" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></span>)</td></tr><tr><td><a href="M_Alteruna_Avatar_Unserialize.htm">Unserialize</a></td><td>
+            <br />(Overrides <span class="noLink">Object.ToString<span id="LST41B3411A_1" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></span>)</td></tr><tr><td><a href="M_Alteruna_Avatar_Unpossessed.htm">Unpossessed</a></td><td><br />(Overrides <a href="M_Alteruna_CommunicationBridge_Unpossessed.htm">CommunicationBridge<span id="LST41B3411A_2" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>Unpossessed<span id="LST41B3411A_3" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></a>)</td></tr><tr><td><a href="M_Alteruna_Avatar_Unserialize.htm">Unserialize</a></td><td>
             Unserialize transform and synchronizables.
             </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Fields</h2><div id="IDAEASection"><table id="FieldList" class="table is-hoverable"><tr><td><a href="F_Alteruna_Avatar_IsPossessed.htm">IsPossessed</a></td><td>
             True when possessed by a <span class="code">User</span>.

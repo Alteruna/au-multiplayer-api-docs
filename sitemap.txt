@@ -115,6 +115,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Synchronizabl
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_TransformSynchronizableCommon_UseGlobalPosition.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_UniqueAvatarChild_Prefabs.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_UniqueAvatarColor_Renderers.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_UniqueAvatarColor_Saturation.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_UniqueAvatarColor_Sprites.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_VoiceSynchronizable_PackageLossBuffer.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_VoiceSynchronizable_PlaybackSource.htm
@@ -204,13 +205,17 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AttributesSyn
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AttributesSync_InvokeRemoteMethod_4.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AttributesSync_InvokeRemoteMethod_5.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AttributesSync_LateUpdate.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AttributesSync_Register.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AttributesSync_Serialize.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AttributesSync_SynchronizableField__ctor.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AttributesSync_SynchronizableMethod__ctor.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AttributesSync_UncommittedFields.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AttributesSync_Unserialize.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Avatar_Possessed.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Avatar_Possessed_1.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Avatar_Serialize.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Avatar_ToString.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Avatar_Unpossessed.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Avatar_Unserialize.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_CommunicationBridgeUID_GetUID.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_CommunicationBridgeUID_MakeUID.htm
@@ -219,6 +224,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Communication
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_CommunicationBridgeUID_op_Implicit.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_CommunicationBridgeUID_op_Implicit_1.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_CommunicationBridgeUID_OverrideUID.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_CommunicationBridgeUID_Register.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_CommunicationBridgeUID_ReleaseOwnership.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_CommunicationBridgeUID_Reset.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_CommunicationBridgeUID_ResetUid.htm
@@ -596,6 +602,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Synchronizabl
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Synchronizable_GetMethodAttributeName.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Synchronizable_InvokeRemoteMethod.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Synchronizable_InvokeRemoteMethod_1.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Synchronizable_Register.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Synchronizable_Reset.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Synchronizable_Serialize.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Synchronizable_SynchronizableField__ctor.htm
@@ -624,7 +631,6 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSync
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable_DisassembleData.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable_Reset.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable_Start.htm
-https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable_Unserialize.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable_Update.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Trinity_Exceptions_LicenseException__ctor.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Trinity_Exceptions_LicenseException__ctor_1.htm
@@ -677,6 +683,9 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_UniqueAvatarC
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_UniqueAvatarChild_SetPrefab.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_UniqueAvatarChild_SetPrefab_1.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_UniqueAvatarChild_TryGetAvatarChild.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_UniqueAvatarColor_HueFromId.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_UniqueAvatarColor_HueFromId_1.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_UniqueAvatarColor_HueFromId_2.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_UniqueAvatarColor_HueToId.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_UniqueAvatarColor_Possessed.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_UniqueAvatarColor_UpdateHue.htm
@@ -765,6 +774,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_Animat
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_AnimationSynchronizable_SetTrigger.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_AttributesSync_BroadcastRemoteMethod.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_AttributesSync_InvokeRemoteMethod.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_Avatar_Possessed.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_CommunicationBridgeUID_op_Implicit.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_Encryption_ReadEncrypted.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_Encryption_WriteEncrypted.htm
@@ -832,6 +842,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_Trinit
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_Trinity_Exceptions_UserIndexArgumentOutOfRangeException__ctor.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_Trinity_Exceptions_UserIndexOutOfRangeException__ctor.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_UniqueAvatarChild_SetPrefab.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_UniqueAvatarColor_HueFromId.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_UniqueAvatarColor_UpdateHue.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_UnityWriter_Write.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_User_op_Implicit.htm
