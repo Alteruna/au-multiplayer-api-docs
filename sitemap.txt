@@ -17,7 +17,9 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_Rigidb
 https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_Service.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_ServiceState.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_Spawner.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_SpawnPointer.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_SyncedAxis.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_SyncedEventBase_1.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_SyncedKey.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_Synchronizable.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_TransformSynchronizableCommon.htm
@@ -80,10 +82,17 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_NameGenerator
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Prefabs_RoomMenu_AutomaticallyRefresh.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Prefabs_RoomMenu_RefreshInterval.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Prefabs_RoomMenu_ShowUserCount.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Prefabs_TextChat_AllowCheats.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Prefabs_TextChat_AllowCommands.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Prefabs_TextChat_AllowHostToToggleCheats.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Prefabs_TextChat_BoldNames.htm
-https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Prefabs_TextChat_NameColor.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Prefabs_TextChat_GetUserColor.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Prefabs_TextChat_LogErrors.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Prefabs_TextChat_LogLocalOnSend.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Prefabs_TextChat_LogSystemMessages.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Prefabs_TextChat_TextChatUpdate.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Prefabs_TextChat_UseRichText.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Prefabs_TextChat_UseTimeStamps.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Rigidbody2DSynchronizable_Rigidbody.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_RigidbodySynchronizableCommon_AllowCollisionToAssumeOwner.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_RigidbodySynchronizableCommon_ApplyAsTransform.htm
@@ -103,7 +112,10 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Spawner_OnObj
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Spawner_OnObjectSpawn.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Spawner_SpawnableObjects.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Spawner_SpawnedObjects.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_SpawnPointer_SpawnPoints.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_SyncedAxis_InputManager.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_SyncedEventBase_1_OnEvent.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_SyncedEventBase_1_Value.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_SyncedKey_DoubleTapTime.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_SyncedKey_InputManager.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_SyncedKey_KeyState.htm
@@ -155,7 +167,9 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/Methods_T_Alteruna_Score
 https://alteruna.github.io/au-multiplayer-api-docs/html/Methods_T_Alteruna_Service.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Methods_T_Alteruna_ServiceState.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Methods_T_Alteruna_Spawner.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/Methods_T_Alteruna_SpawnPointer.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Methods_T_Alteruna_SyncedAxis.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/Methods_T_Alteruna_SyncedEventBase_1.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Methods_T_Alteruna_SyncedKey.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Methods_T_Alteruna_Synchronizable.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Methods_T_Alteruna_TransformSynchronizable.htm
@@ -179,6 +193,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSync
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_Play_4.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_Play_5.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_Rebind.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_Reset.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_SetBool.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_SetBool_1.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_SetFloat.htm
@@ -189,6 +204,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSync
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_SetTarget.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_SetTrigger.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_SetTrigger_1.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_Start.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_StartPlayback.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_StopPlayback.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable__ctor.htm
@@ -237,6 +253,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Communication
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_CommunicationBridge_SetMultiplayerComponent.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_CommunicationBridge_Unpossessed.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_EnableSynchronizable_Possessed.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_EnableSynchronizable_Reset.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_EnableSynchronizable__ctor.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Encryption_ReadEncrypted.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Encryption_ReadEncrypted__1.htm
@@ -374,7 +391,6 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_NameGenerator
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_NameGenerator_GenerateStatic.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Prefabs_RoomMenu_JoinRoom.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Prefabs_TextChat_SendChatMessage.htm
-https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Prefabs_TextChat_SendChatMessageUnformulated.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_ProcedureParameters_Get.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_ProcedureParameters_Get_1.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_ProcedureParameters_Get_10.htm
@@ -426,7 +442,6 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSy
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_AssembleData.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_Awake.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_DisassembleData.htm
-https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_FixedUpdate.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_IsSleeping.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_MovePosition.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_MoveRotation.htm
@@ -439,6 +454,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySync
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizableCommon_Awake.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizableCommon_DisassembleData.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizableCommon_FixedUpdate.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizableCommon_ForceUpdate.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizableCommon_IsSleeping.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizableCommon_OnCollisionEnter.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizableCommon_OnCollisionEnter2D.htm
@@ -457,7 +473,6 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySync
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizable_AssembleData.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizable_Awake.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizable_DisassembleData.htm
-https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizable_FixedUpdate.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizable_IsSleeping.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizable_MovePosition.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizable_MoveRotation.htm
@@ -574,6 +589,8 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Spawner_Spawn
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Spawner_Spawn_8.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Spawner_Spawn_9.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Spawner_Start.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SpawnPointer_SpawnAvatar.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SpawnPointer__ctor.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedAxis_Deregister.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedAxis_op_Implicit.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedAxis_op_Implicit_1.htm
@@ -583,6 +600,15 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedAxis_Re
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedAxis_Register_2.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedAxis__ctor.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedAxis__ctor_1.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedEventBase_1_AssembleData.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedEventBase_1_DisassembleData.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedEventBase_1_Invoke.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedEventBase_1_InvokeSilent.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedEventBase_1_InvokeSilent_1.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedEventBase_1_Invoke_1.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedEventBase_1_Reset.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedEventBase_1_ValueToString.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedEventBase_1__ctor.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedKey_Deregister.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedKey_op_Implicit.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedKey_op_Implicit_1.htm
@@ -610,10 +636,10 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Synchronizabl
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Synchronizable_SyncUpdate.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Synchronizable_Unserialize.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable2D_AssembleData.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable2D_Awake.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable2D_DisassembleData.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable2D_Reset.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable2D_Start.htm
-https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable2D_Teleport.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable2D_Update.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizableCommon_AssembleData.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizableCommon_Awake.htm
@@ -628,6 +654,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSync
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizableCommon_Unpossessed.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizableCommon__ctor.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable_AssembleData.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable_Awake.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable_DisassembleData.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable_Reset.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_TransformSynchronizable_Start.htm
@@ -829,6 +856,8 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_Spawne
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_SyncedAxis_op_Implicit.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_SyncedAxis_Register.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_SyncedAxis__ctor.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_SyncedEventBase_1_Invoke.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_SyncedEventBase_1_InvokeSilent.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_SyncedKey_op_Implicit.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_SyncedKey_Register.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_SyncedKey__ctor.htm
@@ -867,6 +896,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_Sc
 https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_Scoreboard_ScoreObject_1.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_Service.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_SyncedAxis.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_SyncedEventBase_1.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_SyncedKey.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_TransformSynchronizableCommon.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_Trinity_Exceptions_LicenseException.htm
@@ -958,6 +988,8 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_Service_IsCon
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_Service_UserInfo.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_SyncedAxis_Axis.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_SyncedAxis_Value.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_SyncedEventBase_1_HaveBeenInvoked.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_SyncedEventBase_1_LastValue.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_SyncedKey_Key.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_SyncedKey_Value.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_TransformSynchronizableCommon_RefreshRate.htm
@@ -1026,7 +1058,9 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_Scoreboard_Sc
 https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_Service.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_ServiceState.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_Spawner.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_SpawnPointer.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_SyncedAxis.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_SyncedEventBase_1.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_SyncedKey.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_SyncedKey_KeyMode.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_Synchronizable.htm
