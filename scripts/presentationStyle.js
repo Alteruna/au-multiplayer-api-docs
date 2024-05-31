@@ -400,7 +400,9 @@ function OnSearchPageLoad()
                 break;
             }
         }
-    }
+    } else {
+		PerformSearch();
+	}
 }
 
 // Perform a search using the best available method
@@ -676,7 +678,7 @@ function SearchForKeywords(keywords, fileInfo)
 	var content = "<ol>";
 
 	for(var r in rankings)
-		content += "<li><a href=\"" + rankings[r].Filename + "\" target=\"_blank\">" +
+		content += "<li><a href=\"" + rankings[r].Filename + "\">" +
 			rankings[r].PageTitle + "</a></li>";
 
 	content += "</ol>";

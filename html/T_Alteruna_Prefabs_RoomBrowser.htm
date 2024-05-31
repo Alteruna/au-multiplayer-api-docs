@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html >
+<html lang="en-US"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><link href="../icons/favicon.ico" rel="shortcut icon"/><link href="../css/bulma.css" rel="stylesheet"/><link href="../css/font-awesome.min.css" rel="stylesheet"/><link href="../css/presentationStyle.css" rel="stylesheet"/><link href="../css/vs.min.css" rel="stylesheet"/><script src="../scripts/jquery-3.5.1.min.js"></script><script src="../scripts/clipboard.min.js"></script><script src="../scripts/highlight.min.js"></script><script src="../scripts/presentationStyle.js"></script><title>RoomBrowser</title><meta content="RoomBrowser" name="Title"/><meta content="T:Alteruna.Prefabs.RoomBrowser" name="Help.Id"/><meta content="Reference" name="Help.ContentType"/><meta content="Alteruna.Prefabs" name="container"/><meta content="T_Alteruna_Prefabs_RoomBrowser" name="guid"/><meta content="The RoomBrowser is a prefab that gives you access to more settings when creating a room, and filters when looking for a room to join." name="Description"/><meta content="../toc/IDCA.xml" name="tocFile"/></head><body><div class="fixedLayout"><div class="fixedHeader" id="Header"><div class="pageHeader level mb-0 py-2 px-4"><div class="level-left" id="TitleContainer"><div class="level-item" id="DocumentationTitle">Alteruna Multiplayer Docs</div></div><div class="level-right" id="LangFilterSearchContainer"><div class="level-item"><div class="dropdown is-hoverable"><div class="dropdown-trigger"><button aria-controls="dropdown-menu" aria-haspopup="true" class="button"><span id="CurrentLanguage"></span><span class="icon is-small"><i aria-hidden="true" class="fa fa-angle-down"></i></span></button></div><div class="dropdown-menu" role="menu"><div class="dropdown-content" id="LanguageSelections"><a class="dropdown-item languageFilterItem" data-languageid="cs">C#</a></div></div></div></div><div class="level-item"><form action="#" id="SearchForm" onsubmit="TransferToSearchPage(); return false;"><div class="field"><div class="control has-icons-left"><input class="input" id="SearchTerms" maxlength="200" placeholder="Search" type="text"/><span class="icon is-small is-left"><i class="fa fa-search"></i></span><button class="is-hidden" id="SearchButton" type="submit"></button></div></div></form></div></div></div></div><div class="fixedContent"><nav class="breadcrumb my-1 px-2 border-bottom" role="navigation"><ul id="TopicBreadcrumbs"></ul></nav><div class="columns pl-5 pr-5 fixedContent"><div class="column is-hidden-tablet" id="ShowHideTOCColumn"><a id="ShowHideTOC">Show/Hide TOC</a></div><div class="column is-hidden-mobile" id="TOCColumn"><nav class="toc"><ul class="toc-menu" id="TableOfContents"></ul></nav></div><div class="column content is-7" id="TopicContent"><h1>RoomBrowser</h1><div class="summary">
+            The <span class="code">RoomBrowser</span> is a prefab that gives you access to more settings when creating a room, and filters when looking for a room to join.
+            </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span></h2><div id="IDBCSection">
+<h3 class="quickLinkHeader">Browser Menu</h3>
+            The browser shows you all available rooms, and gives you options to sort or filter rooms.
+            On the left side of the browser you can see all available rooms based on your filter settings.
+            On the right side of the browser you can select filters.<br/>
+            
+            Below are some instructions on how to use the browser.<br/><img src="../images/Doc.Prefabs.RoomBrowser.Browser.png"/><ol><li>
+            		The back button: Hides the <span class="code">Room Browser</span></li><li>
+            		The search bar: Filters rooms by name.
+            	</li><li>
+            		The refresh button: Refreshes the room list.
+            	</li><li>
+            		The table header: A list of column headers. Pressing any of the column headers will sort the list by that header.
+            		Default sorting is in the order the rooms was retreived from the server.
+            	</li><li>
+            		Table row: The table row, or list item, represent a room from the list of rooms retrieved from the server.
+            	</li><li>
+            		Filters: A list of filters that allows the player to customize what rooms to show and hide.
+            	</li><li>
+            		The Join/Leave button: If not in a room when pressing the button joins the selected room. Disabled if no room is selected.
+            		When in a room the button will change text to <span class="code">Leave</span>. Leaves the current room when pressed.
+            	</li><li>
+            		The Direct Connect button: Pressing this pops up the Direct Connect menu.
+            		The menu takes in a join code that generated when creating a hidden room. Hidden rooms are not shown in the list of rooms.
+            	</li><li>
+            		The New Room button: Pressing this opens up the Create Room Menu.
+            	</li></ol><h3 class="quickLinkHeader">Create Room Menu</h3>
+            
+            Below are some instructions on how to use the Create Room Menu.<br/><img src="../images/Doc.Prefabs.RoomBrowser.CreateMenu1.png"/><ol><li>
+            		The back button: Goes back to the <span class="code">RoomBrowser</span>.
+            	</li><li>
+            		Room Name: The name that will be displayed in the browser. This can also be changed after creating the room.
+            	</li><li>
+            		Max Players: How many players can join the room. Max value is limited to the value of Max Players in the <span class="code">Multiplayer Component</span>.
+            	</li><li>
+            		Password: Room will require a password to join if this field is filled.
+            	</li><li>
+            		Map: Select what scene to load when the room is joined. The options available are defined in the MapDescriptions file.<br/><b>Note:</b><br/>
+            		Automatically switching scenes after creating/joining a room is a default behaviour, but it can be turned off.
+            		There is an option in the RoomBrowser and CreateRoomMenu scripts called <span class="code">ChangeSceneOnRoomJoined</span>.
+            		If this is turned off you won't automatically switch scenes when creating/joining a room. This can be useful when
+            		your only want to simulate a scene change. For example if you switch presets instead of scenes.
+            	</li><li>
+            		Game Mode: What Game Mode to play. This property only serves as an indicator. The actual game modes is something you will have to implement yourself.
+            	</li><li>
+            		Hidden: Should room be hidden from the browser? If true, you will get an invite code when the room is created.
+            		Anyone with the invite code can join the room via the Direct Connect button.
+            	</li><li>
+            		Scene Preview Image: An image associated with the selected map. You can change the image in the MapDescriptions file.
+            	</li><li>
+            		Description text: Text that describes the map. You can change the text in the MapDescriptions file
+            	</li><li>
+            		Create Room: Pressing this button creates a new room with selected settings.
+            	</li></ol><h3 class="quickLinkHeader">MapDescriptions File</h3>
+            
+            The MapDescriptions file contains settings for the RoomBrowser. This file defines what maps you can select in the Create Room Menu.<br/>
+            Below are some instructions on how the MapDescriptions file can be modified to better fit your game.<br/><img src="../images/Doc.Prefabs.RoomBrowser.MapDescriptions.png"/><ol><li>
+            		Reset Map Descriptions: Pressing this button will reset all settings in the MapDescriptions file.
+            		Settings will be replaced with default values based on the current build settings.
+            	</li><li>
+            		Change Scene On Room Joined: If enabled, load the selected scene when you create or join a room.
+            	</li><li>
+            		Default Image: The default image to display for a map if no image have been selected.
+            	</li><li>
+            		Description Items: The list of all maps that can be selected when creating a room.
+            	</li><li>
+            		Hidden: When true, don't appear as an option among the selectable maps in the Create Room Menu.
+            	</li><li>
+            		Scene: What scene should be loaded when loading a map?
+            	</li><li>
+            		Title: The name that will appear as the title of a map.
+            	</li><li>
+            		Image: The image to show when creating a room. Default Image is shown if no image is selected.
+            	</li><li>
+            		Description: The description of the map. This is displayed when creating a room.
+            	</li></ol><br/><h3 class="quickLinkHeader">Extra Info</h3>
+            The RoomBrowser is a more complex example of how you can use Alteruna's room system to handle rooms.
+            The RoomBrowser also have things you can tweak under the hood.
+            <br/>
+            The RoomBrowser uses <a href="M_Alteruna_Writer_SerializeAndPackString__1.htm" rel="noopener noreferrer" target="_blank">Writer.SerializeAndPackString&lt;T&gt;</a> and <a href="M_Alteruna_Reader_DeserializePackedString__1.htm" rel="noopener noreferrer" target="_blank">Reader.DeserializePackedString&lt;T&gt;</a> to serialize bake in
+            <a href="T_Alteruna_Prefabs_RoomBrowser_CustomRoomInfo.htm">RoomBrowser<span data-languagespecifictext="cs=.|vb=.|cpp=::|nu=.|fs=." id="LST23C41702_0"></span>CustomRoomInfo</a> into the room name. If you want to handle your own custom room data you can use the Writer and Reader methods
+            to easier communicate your custom data.
+            </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Constructors</h2><div id="IDAEASection"><table class="table is-hoverable" id="ConstructorList"><tr><td><a href="M_Alteruna_Prefabs_RoomBrowser__ctor.htm">RoomBrowser</a></td><td> </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>See Also</h2><div id="seeAlsoSection"><h4>Reference</h4><div><a href="N_Alteruna_Prefabs.htm">Alteruna.Prefabs Namespace</a></div></div></div><div class="column is-hidden-mobile" id="InThisArticleColumn"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul class="menu-list" id="InThisArticleMenu"><li><a class="quickLink">Definition</a></li><li><a class="quickLink">Remarks</a></li><li><a class="quickLink">Browser Menu</a></li><li><a class="quickLink">Create Room Menu</a></li><li><a class="quickLink">MapDescriptions File</a></li><li><a class="quickLink">Extra Info</a></li><li><a class="quickLink">Constructors</a></li><li><a class="quickLink">See Also</a></li></ul></nav></div></div></div><footer class="footer border-top py-3 fixedFooter" id="PageFooter"><div class="columns"><div class="column"><p>Copyright © 2024 Alteruna AB</p> 
+				</div><div class="column"> 
+				</div></div></footer></div><script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script></body></html>
