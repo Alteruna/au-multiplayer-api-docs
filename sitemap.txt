@@ -450,9 +450,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSy
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_SetRotation.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_Sleep.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_WakeUp.htm
-https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizableCommon_AssembleData.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizableCommon_Awake.htm
-https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizableCommon_DisassembleData.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizableCommon_FixedUpdate.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizableCommon_ForceUpdate.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RigidbodySynchronizableCommon_IsSleeping.htm
