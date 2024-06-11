@@ -935,7 +935,6 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_Interpolation
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_IUniqueID_UID.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_IUniqueID_UIDString.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_Multiplayer_AvailableRooms.htm
-https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_Multiplayer_Connected.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_Multiplayer_CurrentRoom.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_Multiplayer_InRoom.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_Multiplayer_Instance.htm
