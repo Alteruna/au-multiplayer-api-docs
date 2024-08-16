@@ -23,6 +23,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_Synced
 https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_SyncedKey.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_Synchronizable.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_TransformSynchronizableCommon.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_Trinity_VersionControl.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_UniqueAvatarChild.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_UniqueAvatarColor.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_VoiceSynchronizable.htm
@@ -125,6 +126,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Synchronizabl
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Synchronizable_MAX_LOD.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Synchronizable_Reliability.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_TransformSynchronizableCommon_UseGlobalPosition.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_Trinity_VersionControl_CompatibilityVersion.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_UniqueAvatarChild_Prefabs.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_UniqueAvatarColor_Renderers.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_UniqueAvatarColor_Saturation.htm
@@ -586,6 +588,8 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Spawner_Spawn
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Spawner_Spawn_8.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Spawner_Spawn_9.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Spawner_Start.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SpawnPointer_OnEnable.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SpawnPointer_SetAsSpawnPoint.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SpawnPointer_SpawnAvatar.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedAxis_Deregister.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_SyncedAxis_op_Implicit.htm
@@ -894,6 +898,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_Sy
 https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_TransformSynchronizableCommon.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_Trinity_Exceptions_LicenseException.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_Trinity_Exceptions_RoomException.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_Trinity_VersionControl.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_User.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_UtcTime.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Properties_T_Alteruna_VoiceSynchronizable.htm
@@ -992,6 +997,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_TransformSync
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_Trinity_Exceptions_LicenseException_Message.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_Trinity_Exceptions_RoomException_Message.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_Trinity_Exceptions_RoomException_Room.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_Trinity_VersionControl_Version.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_User_Index.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_User_IsHost.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_User_Latency.htm
@@ -1083,6 +1089,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_Trinity_Persi
 https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_Trinity_PersistenceStorage_StorageType.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_Trinity_Reliability.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_Trinity_Transport_TransportType.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_Trinity_VersionControl.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_UniqueAvatarChild.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_UniqueAvatarColor.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/T_Alteruna_UnityLog.htm
