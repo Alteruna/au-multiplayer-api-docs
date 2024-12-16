@@ -45,6 +45,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_VoiceS
 https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_VoiceSynchronizable_EncryptionType.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Fields_T_Alteruna_VoiceSynchronizable_SupportedPlatforms.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_AnimationSynchronizable_Animator.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_AnimationSynchronizable_OnlyCommitNewStates.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_AttributesSync_LocalBehavior_Disabled.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_AttributesSync_LocalBehavior_Invoke.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_AttributesSync_LocalBehavior_Reply.htm
@@ -242,7 +243,6 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_VoiceSynchron
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_VoiceSynchronizable_EncryptionType_Bit16.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_VoiceSynchronizable_EncryptionType_Bit8.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_VoiceSynchronizable_EncryptionType_value__.htm
-https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_VoiceSynchronizable_Microphone.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_VoiceSynchronizable_PackageLossBuffer.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_VoiceSynchronizable_PlaybackSource.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/F_Alteruna_VoiceSynchronizable_SendFrequency.htm
@@ -319,6 +319,8 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSync
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_Play_5.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_Rebind.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_Reset.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_ResetTrigger.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_ResetTrigger_1.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_SetBool.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_SetBool_1.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_AnimationSynchronizable_SetFloat.htm
@@ -934,6 +936,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/Operators_T_Alteruna_Syn
 https://alteruna.github.io/au-multiplayer-api-docs/html/Operators_T_Alteruna_SyncedKey.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Operators_T_Alteruna_User.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_AnimationSynchronizable_Play.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_AnimationSynchronizable_ResetTrigger.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_AnimationSynchronizable_SetBool.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_AnimationSynchronizable_SetFloat.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/Overload_Alteruna_AnimationSynchronizable_SetInteger.htm
@@ -1158,6 +1161,7 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_VoiceSynchron
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_VoiceSynchronizable_IsActive.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_VoiceSynchronizable_IsSender.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_VoiceSynchronizable_LocalInputController.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_VoiceSynchronizable_Microphone.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_VoiceSynchronizable_PeakVolume.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_VoiceSynchronizable_UnityMicrophone_devices.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/P_Alteruna_VoiceSynchronizable_UnityMicrophone_SupportedPlatforms.htm
