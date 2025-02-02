@@ -577,6 +577,8 @@ https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RemoteProcedu
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_RemoteProcedure__ctor.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_AddForce.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_AddForce_1.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_AddForce_2.htm
+https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_AddForce_3.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_AddTorque.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_AssembleData.htm
 https://alteruna.github.io/au-multiplayer-api-docs/html/M_Alteruna_Rigidbody2DSynchronizable_Awake.htm
