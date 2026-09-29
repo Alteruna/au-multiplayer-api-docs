@@ -348,6 +348,7 @@ textarea {
 }
 
 code,
+c,
 pre {
   -moz-osx-font-smoothing: auto;
   -webkit-font-smoothing: auto;
@@ -375,7 +376,7 @@ a:hover {
   color: #363636;
 }
 
-code {
+code, c {
   background-color: whitesmoke;
   color: #da1039;
   font-size: 0.875em;
@@ -430,7 +431,7 @@ pre {
   word-wrap: normal;
 }
 
-pre code {
+pre code, pre c {
   background-color: transparent;
   color: currentColor;
   font-size: 1em;
@@ -2378,11 +2379,13 @@ div.icon-text {
 }
 
 .notification code,
+.notification c,
 .notification pre {
   background: white;
 }
 
-.notification pre code {
+.notification pre code,
+.notification pre c {
   background: transparent;
 }
 
@@ -4868,7 +4871,8 @@ button.dropdown-item.is-active {
   justify-content: space-between;
 }
 
-.level code {
+.level code,
+.level c{
   border-radius: 4px;
 }
 
@@ -5299,11 +5303,13 @@ button.dropdown-item.is-active {
 }
 
 .message-body code,
+.message-body c,
 .message-body pre {
   background-color: white;
 }
 
-.message-body pre code {
+.message-body pre code,
+.message-body pre c {
   background-color: transparent;
 }
 

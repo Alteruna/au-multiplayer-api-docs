@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html ><html lang="en-US"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="shortcut icon" href="../icons/favicon.ico" /><link rel="stylesheet" href="../css/bulma.css" /><link rel="stylesheet" href="../css/font-awesome.min.css" /><link rel="stylesheet" href="../css/presentationStyle.css" /><link rel="stylesheet" href="../css/vs.min.css" /><script src="../scripts/jquery-3.5.1.min.js"></script><script src="../scripts/clipboard.min.js"></script><script src="../scripts/highlight.min.js"></script><script src="../scripts/presentationStyle.js"></script><title>Multiplayer Class</title><meta name="Title" content="Multiplayer" /><meta name="Help.Id" content="T:AlterunaComponents.Multiplayer" /><meta name="Help.ContentType" content="Reference" /><meta name="container" content="AlterunaComponents" /><meta name="guid" content="T_AlterunaComponents_Multiplayer" /><meta name="Description" content="The component MultiplayerManager gives access to all functionality and communication for Alteruna Multiplayer." /><meta name="tocFile" content="../toc/IDC.xml" /></head><body><div class="fixedLayout"><div id="Header" class="fixedHeader"><div class="pageHeader level mb-0 py-2 px-4"><div id="TitleContainer" class="level-left"><div id="DocumentationTitle" class="level-item">Alteruna Multiplayer Docs</div></div><div id="LangFilterSearchContainer" class="level-right"><div class="level-item"><div class="dropdown is-hoverable"><div class="dropdown-trigger"><button class="button" aria-haspopup="true" aria-controls="dropdown-menu"><span id="CurrentLanguage"></span><span class="icon is-small"><i class="fa fa-angle-down" aria-hidden="true"></i></span></button></div><div class="dropdown-menu" role="menu"><div id="LanguageSelections" class="dropdown-content"><a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a></div></div></div></div><div class="level-item"><form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;"><div class="field"><div class="control has-icons-left"><input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" /><span class="icon is-small is-left"><i class="fa fa-search"></i></span><button id="SearchButton" type="submit" class="is-hidden"></button></div></div></form></div></div></div></div><div class="fixedContent"><nav class="breadcrumb my-1 px-2 border-bottom" role="navigation"><ul id="TopicBreadcrumbs" /></nav><div class="columns pl-5 pr-5 fixedContent"><div id="ShowHideTOCColumn" class="column is-hidden-tablet"><a id="ShowHideTOC">Show/Hide TOC</a></div><div id="TOCColumn" class="column is-hidden-mobile"><nav class="toc"><ul id="TableOfContents" class="toc-menu" /></nav></div><div id="TopicContent" class="column content is-7"><h1>Multiplayer Class</h1><div id="TopicNotices"><span class="tags"><span class="tag is-danger is-medium">Note: This API is now obsolete.</span></span></div><div class="summary">
+             The component <span class="code">MultiplayerManager</span> gives access to all functionality and communication for Alteruna Multiplayer.
+             </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Definition</h2><div id="IDBSection"><strong>Namespace:</strong> <a href="N_AlterunaComponents.htm">AlterunaComponents</a><br /><strong>Assembly:</strong> Alteruna.Multiplayer.UnityFiles (in Alteruna.Multiplayer.UnityFiles.dll) Version: 1.0.0+197d965a098acb48958a825b1bb40aa5467dffd7<div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">[<span class="identifier">ObsoleteAttribute</span>("Use MultiplayerManager instead of Multiplayer.
+One can be created in the right-click menu.")]
+<span class="keyword">public</span> <span class="keyword">sealed</span> <span class="keyword">class</span> <span class="identifier">Multiplayer</span> : <span class="identifier">MultiplayerManager</span></code></pre></div></div><dl class="inheritanceHierarchy"><dt>Inheritance</dt><dd><span class="noLink">Object</span>  <span class="icon is-small"><i class="fa fa-arrow-right"></i></span>  <span class="noLink">Object</span>  <span class="icon is-small"><i class="fa fa-arrow-right"></i></span>  <span class="noLink">Component</span>  <span class="icon is-small"><i class="fa fa-arrow-right"></i></span>  <span class="noLink">Behaviour</span>  <span class="icon is-small"><i class="fa fa-arrow-right"></i></span>  <span class="noLink">MonoBehaviour</span>  <span class="icon is-small"><i class="fa fa-arrow-right"></i></span>  <a href="T_Alteruna_Multiplayer_Unity_MultiplayerManager.htm">MultiplayerManager</a>  <span class="icon is-small"><i class="fa fa-arrow-right"></i></span>  <span class="selflink">Multiplayer</span></dd></dl></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Remarks</h2><div id="IDBCSection">
+             When a reference for <span class="code">MultiplayerManager</span> is needed, it is recommended to inherit from
+             <a href="T_Alteruna_Multiplayer_Unity_CommunicationBridge.htm">CommunicationBridge</a> or one of its many inheritors, such as <a href="T_Alteruna_Multiplayer_Unity_AttributesSync.htm">AttributesSync</a>.
+            
+             Other methods, such as using <span class="code">MultiplayerManager.Instance</span> or creating a serialized property in the scene
+             will not work with the <a href="https://docs.v2.alteruna.com/html/T_Alteruna_Multiplayer_Tools_MultiClientSimulation.htm" target="_blank" rel="noopener noreferrer">MultiClientSimulation</a> tool.<br /><br /><img src="../images/Alteruna.Multiplayer.png" /></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Example</h2><div id="IDCCSection"><h3 class="quickLinkHeader">Accessing users</h3>
+            
+             An example of how you can use <span class="code">MultiplayerManager</span> to access all user ids in the current room.<br /><div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">public class MyClass : CommunicationBridge
+{
+    public ushort[] GetUserIDs()
+    {
+        return
+            // Get all users in the current room
+            Multiplayer.GetUsers()
+            // Select user Index
+            .Select(u =&gt; u.Index)
+            // return as an array
+            .ToArray();
+    }
+}</code></pre></div></div><h3 class="quickLinkHeader">Creating custom rooms</h3>
+             
+             An example of how you can create a room using <a href="M_Alteruna_Multiplayer_Unity_MultiplayerManager_CreatePrivateRoom_1.htm">CreatePrivateRoom(String, UInt16, Boolean, Boolean)</a> and <a href="T_Alteruna_Multiplayer_Core_MethodArguments_RoomArgs.htm">RoomArgs</a>.<br /><div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">public class MyClass : CommunicationBridge
+{
+       private readonly RoomArgs _roomSettings = new RoomArgs
+       {
+           // At most four players can be in this room at once.
+           MaxUsers = 4,
+           // The user joins the room upon creation.
+           JoinRoom = true,
+       };
+
+       public void CreatePrivateRoom()
+       {
+           Multiplayer.CreatePrivateRoom(_roomSettings);
+       }
+}</code></pre></div></div></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Constructors</h2><div id="IDAEASection"><table id="ConstructorList" class="table is-hoverable"><tr><td><a href="M_AlterunaComponents_Multiplayer__ctor.htm">Multiplayer</a></td><td> </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Methods</h2><div id="IDBEASection"><table id="MethodList" class="table is-hoverable"><tr><td><a href="M_AlterunaComponents_Multiplayer_CreateNewMultiplayerManager.htm">CreateNewMultiplayerManager</a></td><td> </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>See Also</h2><div id="seeAlsoSection"><h4 class="quickLinkHeader">Reference</h4><div><a href="N_AlterunaComponents.htm">AlterunaComponents Namespace</a></div><div><a href="T_Alteruna_Multiplayer_Unity_CommunicationBridge.htm">CommunicationBridge</a></div><h4 class="quickLinkHeader">Other Resources</h4><div><a href="https://docs.v2.alteruna.com/html/T_Alteruna_Multiplayer_Tools_MultiClientSimulation.htm" target="_blank" rel="noopener noreferrer">MultiClientSimulation</a></div><div><a href="https://docs.v2.alteruna.com/html/F_Alteruna_Guides_UserGuide_Part02MultiplayerComponent.htm" target="_blank" rel="noopener noreferrer">User Guide - Multiplayer Component</a></div></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Definition</a></li><li><a class="quickLink">Remarks</a></li><li><a class="quickLink">Example</a></li><li><a class="quickLink">Accessing users</a></li><li><a class="quickLink">Creating custom rooms</a></li><li><a class="quickLink">Constructors</a></li><li><a class="quickLink">Methods</a></li><li><a class="quickLink">See Also</a><ul class="menu"><li><a class="quickLink">Reference</a></li><li><a class="quickLink">Other Resources</a></li></ul></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div class="column">Alteruna Multiplayer v2.1.3r18<p>Copyright © 2026 Alteruna AB</p> 
+				</div><div class="column"> 
+				</div></div></footer></div><script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script></body></html>

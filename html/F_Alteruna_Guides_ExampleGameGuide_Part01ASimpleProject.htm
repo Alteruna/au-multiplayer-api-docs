@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html ><html lang="en-US"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="shortcut icon" href="../icons/favicon.ico" /><link rel="stylesheet" href="../css/bulma.css" /><link rel="stylesheet" href="../css/font-awesome.min.css" /><link rel="stylesheet" href="../css/presentationStyle.css" /><link rel="stylesheet" href="../css/vs.min.css" /><script src="../scripts/jquery-3.5.1.min.js"></script><script src="../scripts/clipboard.min.js"></script><script src="../scripts/highlight.min.js"></script><script src="../scripts/presentationStyle.js"></script><title>ExampleGameGuide.Part01ASimpleProject Field</title><meta name="Title" content="Part01ASimpleProject" /><meta name="Help.Id" content="F:Alteruna.Guides.ExampleGameGuide.Part01ASimpleProject" /><meta name="Help.ContentType" content="Reference" /><meta name="container" content="Alteruna.Guides" /><meta name="guid" content="F_Alteruna_Guides_ExampleGameGuide_Part01ASimpleProject" /><meta name="Description" content="The process of setting up a multiplayer game using Alteruna." /><meta name="tocFile" content="../toc/IDABDA.xml" /></head><body><div class="fixedLayout"><div id="Header" class="fixedHeader"><div class="pageHeader level mb-0 py-2 px-4"><div id="TitleContainer" class="level-left"><div id="DocumentationTitle" class="level-item">Alteruna Multiplayer Docs</div></div><div id="LangFilterSearchContainer" class="level-right"><div class="level-item"><div class="dropdown is-hoverable"><div class="dropdown-trigger"><button class="button" aria-haspopup="true" aria-controls="dropdown-menu"><span id="CurrentLanguage"></span><span class="icon is-small"><i class="fa fa-angle-down" aria-hidden="true"></i></span></button></div><div class="dropdown-menu" role="menu"><div id="LanguageSelections" class="dropdown-content"><a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a></div></div></div></div><div class="level-item"><form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;"><div class="field"><div class="control has-icons-left"><input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" /><span class="icon is-small is-left"><i class="fa fa-search"></i></span><button id="SearchButton" type="submit" class="is-hidden"></button></div></div></form></div></div></div></div><div class="fixedContent"><nav class="breadcrumb my-1 px-2 border-bottom" role="navigation"><ul id="TopicBreadcrumbs" /></nav><div class="columns pl-5 pr-5 fixedContent"><div id="ShowHideTOCColumn" class="column is-hidden-tablet"><a id="ShowHideTOC">Show/Hide TOC</a></div><div id="TOCColumn" class="column is-hidden-mobile"><nav class="toc"><ul id="TableOfContents" class="toc-menu" /></nav></div><div id="TopicContent" class="column content is-7"><h1>Example<wbr />Game<wbr />Guide<span id="LSTD8F1681D_0" data-languageSpecificText="cpp=::|nu=."></span>Part<wbr />01ASimple<wbr />Project Field</h1><div class="summary">
+             The process of setting up a multiplayer game using Alteruna.
+             </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Definition</h2><div id="IDBSection"><strong>Namespace:</strong> <a href="N_Alteruna_Guides.htm">Alteruna.Guides</a><br /><strong>Assembly:</strong> Alteruna.Doc (in Alteruna.Doc.dll) Version: 1.0.0+197d965a098acb48958a825b1bb40aa5467dffd7<div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs"><span class="keyword">public</span> <span class="identifier">bool</span> <span class="identifier">Part01ASimpleProject</span></code></pre></div></div><h4>Field Value</h4><a href="https://learn.microsoft.com/dotnet/api/system.boolean" target="_self" rel="noopener noreferrer">Boolean</a></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Remarks</h2><div id="IDBCSection">
+             [DocStyle(format=md)]
+             In this part, we will go through how to set up a project with Alteruna, how spawning works,\n
+             and how to sync transforms between players.\n\n
+             More information or support, check out the [Alteruna Discord server](https://discord.gg/QT8KTe2Hzk).\n
+             
+             ## Set up the Project\n
+             Create a new 2D project in Unity (Unity 2021.3 or later) and add the Alteruna Multiplayer package. 
+             (See [Get Alteruna Multiplayer Guide](F_Alteruna_Guides_UserGuide_Part01GetAlterunaMultiplayer.htm) for more details)\n
+            
+             ## Set up the Multiplayer Component\n
+             Lets add a multiplayer manager to our scene.\n
+             In a new scene, right click in the hierarchy and navigate to `Alteruna → Multiplayer Manager`\n\n
+             <img src="../images/Doc.Hierarchy.AddMuliplayerManager.png" />\n\n
+            
+             *Registration is optional but without it, you are limited to local hosting.*\n
+             
+             ## Create Player Avatar\n
+             - Create an object to represent the player. In this example we will make a `2D Object → Sprites → Square`.\n
+             - Add an `Avatar` component.\n
+             - Add a `TransformSynchronizable2D` component.\n
+             <img src="../images/ExampleGameGuide.Part01ASimpleProject.Avatar.png" />\n\n
+             To control the Player, we need to create a controller component and then add it to our Player object.\n
+             In this example we will make a simple version of a player controller which looks like this:\n
+             
+             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">using UnityEngine;
+using Alteruna.Multiplayer.Core;
+using Alteruna.Multiplayer.Unity;
+
+public class PlayerController : CommunicationBridge
+{
+       public float Speed = 10.0f;
+       public float RotationSpeed = 180.0f;
+
+       public override void Possessed(bool isMe, User user)
+       {
+           enabled = isMe;
+
+           if (isMe)
+           {
+               SpriteRenderer renderer = GetComponent&lt;SpriteRenderer&gt;();
+               // Set the color sprite representing me to be green
+               renderer.color = Color.green;
+           }
+       }
+
+       // Only runs when possessed by local user (isMe == true)
+       // because of the method above.
+       void Update()
+       {
+           // Get the horizontal and vertical axis.
+           float _translation = Input.GetAxis("Vertical") * Speed;
+           float _rotation = -Input.GetAxis("Horizontal") * RotationSpeed;
+
+           _translation *= Time.deltaTime;
+           _rotation *= Time.deltaTime;
+
+           transform.Translate(0, _translation, 0, Space.Self);
+           transform.Rotate(0, 0, _rotation);
+       }
+}</code></pre></div></div>
+             
+             ## Spawn Player Avatar when joining a Room\n
+             To use the newly created Player object in our game, we must first save it as a prefab.\n
+             Once we have a player prefab, we can hook it up to the Multiplayer Component to be automatically\n
+             spawned when we or someone else joins the Room.\n
+            
+             First, in the Multiplayer Component, change the `Spawn Avatar` dropdown value to `Spawn On Join`.\n
+             This will open up more options. Put the Player prefab that we made earlier in the `Avatar Prefab to spawn` property.\n
+             <img src="../images/Doc.MuliplayerManager.Avatar.png" />\n\n
+            
+             Now, when we or someone else joins a Room, an instance of the Player prefab will be spawned and only accept\n
+             input from the User it represents!\n\n
+            
+             ## Test the game!\n
+             To test that our game works, add the `RoomMenu` prefab into the scene so that we can join a room easily.\n
+             The prefab is located in `Alteruna Multiplayer SDK → Prefabs → RoomMenu`\n
+             <img src="../images/Doc.Prefabs.RoomMenu.png" />\n\n
+            
+             Then, build and run the game! Now, if we start the game and join the same Room on two instances at the same time,\n
+             we should see two of our Player objects but only be able to control the green one!\n
+             It should look something like this:\n
+             <img src="https://user-images.githubusercontent.com/90312525/172858371-3dc9da53-f783-4e8b-b9fe-e979a276db97.gif" width="300" />\n
+            
+             ---\n
+             [← Back](T_Alteruna_Guides_ExampleGameGuide.htm) | [Next →](F_Alteruna_Guides_ExampleGameGuide_Part02Interaction.htm)
+             </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>See Also</h2><div id="seeAlsoSection"><h4>Reference</h4><div><a href="T_Alteruna_Guides_ExampleGameGuide.htm">ExampleGameGuide Class</a></div><div><a href="N_Alteruna_Guides.htm">Alteruna.Guides Namespace</a></div></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Definition</a></li><li><a class="quickLink">Remarks</a></li><li><a class="quickLink">See Also</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div class="column">Alteruna Multiplayer v2.1.3r18<p>Copyright © 2026 Alteruna AB</p> 
+				</div><div class="column"> 
+				</div></div></footer></div><script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script></body></html>

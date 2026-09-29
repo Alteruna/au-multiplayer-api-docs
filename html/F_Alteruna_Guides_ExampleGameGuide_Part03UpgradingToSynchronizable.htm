@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html ><html lang="en-US"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="shortcut icon" href="../icons/favicon.ico" /><link rel="stylesheet" href="../css/bulma.css" /><link rel="stylesheet" href="../css/font-awesome.min.css" /><link rel="stylesheet" href="../css/presentationStyle.css" /><link rel="stylesheet" href="../css/vs.min.css" /><script src="../scripts/jquery-3.5.1.min.js"></script><script src="../scripts/clipboard.min.js"></script><script src="../scripts/highlight.min.js"></script><script src="../scripts/presentationStyle.js"></script><title>ExampleGameGuide.Part03UpgradingToSynchronizable Field</title><meta name="Title" content="Part03UpgradingToSynchronizable" /><meta name="Help.Id" content="F:Alteruna.Guides.ExampleGameGuide.Part03UpgradingToSynchronizable" /><meta name="Help.ContentType" content="Reference" /><meta name="container" content="Alteruna.Guides" /><meta name="guid" content="F_Alteruna_Guides_ExampleGameGuide_Part03UpgradingToSynchronizable" /><meta name="Description" content="Upgrading the PlayerController from part 2 to a Synchronizable, so players who join later also see who is blinking." /><meta name="tocFile" content="../toc/IDABDA.xml" /></head><body><div class="fixedLayout"><div id="Header" class="fixedHeader"><div class="pageHeader level mb-0 py-2 px-4"><div id="TitleContainer" class="level-left"><div id="DocumentationTitle" class="level-item">Alteruna Multiplayer Docs</div></div><div id="LangFilterSearchContainer" class="level-right"><div class="level-item"><div class="dropdown is-hoverable"><div class="dropdown-trigger"><button class="button" aria-haspopup="true" aria-controls="dropdown-menu"><span id="CurrentLanguage"></span><span class="icon is-small"><i class="fa fa-angle-down" aria-hidden="true"></i></span></button></div><div class="dropdown-menu" role="menu"><div id="LanguageSelections" class="dropdown-content"><a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a></div></div></div></div><div class="level-item"><form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;"><div class="field"><div class="control has-icons-left"><input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" /><span class="icon is-small is-left"><i class="fa fa-search"></i></span><button id="SearchButton" type="submit" class="is-hidden"></button></div></div></form></div></div></div></div><div class="fixedContent"><nav class="breadcrumb my-1 px-2 border-bottom" role="navigation"><ul id="TopicBreadcrumbs" /></nav><div class="columns pl-5 pr-5 fixedContent"><div id="ShowHideTOCColumn" class="column is-hidden-tablet"><a id="ShowHideTOC">Show/Hide TOC</a></div><div id="TOCColumn" class="column is-hidden-mobile"><nav class="toc"><ul id="TableOfContents" class="toc-menu" /></nav></div><div id="TopicContent" class="column content is-7"><h1>Example<wbr />Game<wbr />Guide<span id="LSTFA4F3D5B_0" data-languageSpecificText="cpp=::|nu=."></span>Part<wbr />03Upgrading<wbr />To<wbr />Synchronizable Field</h1><div class="summary">
+             Upgrading the PlayerController from part 2 to a Synchronizable, so players who join later also see who is blinking.
+             </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Definition</h2><div id="IDBSection"><strong>Namespace:</strong> <a href="N_Alteruna_Guides.htm">Alteruna.Guides</a><br /><strong>Assembly:</strong> Alteruna.Doc (in Alteruna.Doc.dll) Version: 1.0.0+197d965a098acb48958a825b1bb40aa5467dffd7<div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs"><span class="keyword">public</span> <span class="identifier">bool</span> <span class="identifier">Part03UpgradingToSynchronizable</span></code></pre></div></div><h4>Field Value</h4><a href="https://learn.microsoft.com/dotnet/api/system.boolean" target="_self" rel="noopener noreferrer">Boolean</a></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Remarks</h2><div id="IDBCSection">
+             [DocStyle(format=md)]
+             In [Part 2](F_Alteruna_Guides_ExampleGameGuide_Part02Interaction.htm) we made players blink red using an RPC.\n
+             That works for everyone who is in the Room when the blink starts, but try this: hold Space on one instance, then join the Room with a second instance.\n
+             The new player sees a white square, even though the first player is still blinking.\n
+             \n
+             ## Why the new player misses the blink\n
+             An RPC is a one-off event. `BroadcastRemoteMethod("BlinkRpc", true)` is sent once, to the users that are in the Room at that moment.\n
+             A user who joins later never receives it, so from their point of view the blink never happened.\n
+             \n
+             When a user joins a Room, Alteruna runs a **force sync**: every user already in the Room sends the new user the current state of all their Synchronizables.\n
+             To take part in that, the blink needs to be *state* the component holds, rather than an event it sends.\n
+             Read more about how force sync works in [Developer Guide Part 03](F_Alteruna_Guides_DeveloperGuide_Part03ForceSync.htm).\n
+             \n
+             `AttributesSync` does have a `ForceSyncMethods` setting (off by default) that repeats the last call to each RPC after a force sync.\n
+             It is a quick fix, but a limited one: only the user with the lowest user ID repeats its calls, only calls that user made itself are repeated, and they run again for everyone in the Room, not only for the new user.\n
+             A `Synchronizable` is still recommended, for full control over what is sent and better performance.\n
+             \n
+             ## Update the PlayerController\n
+             We will change `PlayerController` to inherit from `Synchronizable` instead of `AttributesSync`.\n
+             A `Synchronizable` holds its own state and writes it out whenever it is asked to, both for regular updates and for force sync.\n
+             \n
+             We will make five changes to `PlayerController`:\n
+             1. Change the base class from `AttributesSync` to `Synchronizable`.\n
+             2. Replace the `BlinkRpc` method with an `_isBlinking` field that holds the current state.\n
+             3. In `Update()`, when the Jump axis changes, update `_isBlinking` and call `Commit()` to tell Alteruna the state should be sent. Then call `SyncUpdate()` so the committed state actually goes out.\n
+             4. Override `AssembleData` to write `_isBlinking`, and `DisassembleData` to read it back and update the color.\n
+             5. Set `Reliability` to `Reliable` in `Awake()`. A Synchronizable is unreliable by default, which suits data that changes every frame, but the blink state only changes when Space is pressed or released, so no update can be lost.\n
+             \n
+             Here is the full, updated script:\n
+             \n
+             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">using UnityEngine;
+using Alteruna.Multiplayer.Core;
+using Alteruna.Multiplayer.Core.MethodArguments;
+using Alteruna.Multiplayer.Core.PacketProcessing;
+using Alteruna.Multiplayer.Unity;
+
+public class PlayerController : Synchronizable
+{
+    public float Speed = 10.0f;
+    public float RotationSpeed = 180.0f;
+    private SpriteRenderer _renderer;
+    private bool _isBlinking = false;
+
+    void Awake()
+    {
+        _renderer = GetComponent&lt;SpriteRenderer&gt;();
+
+        // The blink state only changes when Space is pressed or released, so every update must arrive.
+        Reliability = Reliability.Reliable;
+    }
+
+    public override void Possessed(bool isMe, User user)
+    {
+        enabled = isMe;
+        UpdateColor();
+    }
+
+    // Only runs when possessed by local user (isMe == true)
+    void Update()
+    {
+        // Get the horizontal and vertical axis.
+        float _translation = Input.GetAxis("Vertical") * Speed;
+        float _rotation = -Input.GetAxis("Horizontal") * RotationSpeed;
+
+        _translation *= Time.deltaTime;
+        _rotation *= Time.deltaTime;
+
+        transform.Translate(0, _translation, 0, Space.Self);
+        transform.Rotate(0, 0, _rotation);
+
+        // Blink based on the state of Jump axis (Spacebar button)
+        bool blink = Input.GetAxisRaw("Jump") &gt;= 0.5f;
+        if (blink != _isBlinking)
+        {
+            _isBlinking = blink;
+            UpdateColor();
+
+            // Tell Alteruna that our state has changed and should be sent to the other users.
+            Commit();
+        }
+
+        // Send the committed state. Only the local player changes it, so this only needs to run here.
+        SyncUpdate();
+    }
+
+    // Called when our state is sent, both for regular updates and when a new user joins (force sync).
+    public override void AssembleData(Writer writer, SerializeInfo info)
+    {
+        writer.Write(_isBlinking);
+    }
+
+    // Called on the other users when our state arrives, including a user who just joined the Room.
+    public override void DisassembleData(Reader reader, UnserializeInfo info)
+    {
+        _isBlinking = reader.ReadBool();
+        UpdateColor();
+    }
+
+    private void UpdateColor()
+    {
+        if (_isBlinking)
+        {
+            // Set color to red.
+            _renderer.color = Color.red;
+        }
+        else
+        {
+            // Green for the local user, white for everyone else.
+            // (enabled is set to isMe in Possessed.)
+            _renderer.color = enabled ? Color.green : Color.white;
+        }
+    }
+}</code></pre></div></div>
+             \n
+             `DisassembleData` does not care whether the data came from a regular update or a force sync.\n
+             Either way it gets the current blink state and sets the color to match.\n
+             \n
+             ## Test the game!\n
+             Build and run the game again. Hold Space on the first instance, then join the Room with a second one.\n
+             This time, the second instance sees the first player in red as soon as it joins, and the color keeps following Space presses as before.\n
+             \n
+             ## Events or state?\n
+             Both parts of this guide have their place:\n
+             - Use an RPC, like in Part 2, for things that happen once and are over, like firing a weapon or playing a sound. A player who joins later has no reason to see them.\n
+             - Use a Synchronizable for state that lasts, like a color, health, or a door being open. A player who joins later needs to know it.\n
+             \n
+             A Synchronizable also gives you full control over force sync. For example, you can leave an object out of the force sync entirely.\n
+             See [Developer Guide Part 03 - Force Sync](F_Alteruna_Guides_DeveloperGuide_Part03ForceSync.htm) for how, and read more about Synchronizables [here](T_Alteruna_Multiplayer_Unity_Synchronizable.htm).\n
+             \n
+             ---\n
+             [← Back](F_Alteruna_Guides_ExampleGameGuide_Part02Interaction.htm) | [Next →](T_Alteruna_Guides_UserGuide.htm)\n
+             </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>See Also</h2><div id="seeAlsoSection"><h4 class="quickLinkHeader">Reference</h4><div><a href="T_Alteruna_Guides_ExampleGameGuide.htm">ExampleGameGuide Class</a></div><div><a href="N_Alteruna_Guides.htm">Alteruna.Guides Namespace</a></div><h4 class="quickLinkHeader">Other Resources</h4><div><a href="https://docs.v2.alteruna.com/html/F_Alteruna_Guides_DeveloperGuide_Part03ForceSync.htm" target="_blank" rel="noopener noreferrer">Guide: Force Sync</a></div></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Definition</a></li><li><a class="quickLink">Remarks</a></li><li><a class="quickLink">See Also</a><ul class="menu"><li><a class="quickLink">Reference</a></li><li><a class="quickLink">Other Resources</a></li></ul></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div class="column">Alteruna Multiplayer v2.1.3r18<p>Copyright © 2026 Alteruna AB</p> 
+				</div><div class="column"> 
+				</div></div></footer></div><script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script></body></html>

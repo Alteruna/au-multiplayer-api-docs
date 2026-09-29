@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html ><html lang="en-US"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="shortcut icon" href="../icons/favicon.ico" /><link rel="stylesheet" href="../css/bulma.css" /><link rel="stylesheet" href="../css/font-awesome.min.css" /><link rel="stylesheet" href="../css/presentationStyle.css" /><link rel="stylesheet" href="../css/vs.min.css" /><script src="../scripts/jquery-3.5.1.min.js"></script><script src="../scripts/clipboard.min.js"></script><script src="../scripts/highlight.min.js"></script><script src="../scripts/presentationStyle.js"></script><title>DeveloperGuide.Part03ForceSync Field</title><meta name="Title" content="Part03ForceSync" /><meta name="Help.Id" content="F:Alteruna.Guides.DeveloperGuide.Part03ForceSync" /><meta name="Help.ContentType" content="Reference" /><meta name="container" content="Alteruna.Guides" /><meta name="guid" content="F_Alteruna_Guides_DeveloperGuide_Part03ForceSync" /><meta name="Description" content="What force sync is, how to convert an AttributesSync into a Synchronizable so you control what it sends during force sync, and how to discard its force sync packet entirely." /><meta name="tocFile" content="../toc/IDAADA.xml" /></head><body><div class="fixedLayout"><div id="Header" class="fixedHeader"><div class="pageHeader level mb-0 py-2 px-4"><div id="TitleContainer" class="level-left"><div id="DocumentationTitle" class="level-item">Alteruna Multiplayer Docs</div></div><div id="LangFilterSearchContainer" class="level-right"><div class="level-item"><div class="dropdown is-hoverable"><div class="dropdown-trigger"><button class="button" aria-haspopup="true" aria-controls="dropdown-menu"><span id="CurrentLanguage"></span><span class="icon is-small"><i class="fa fa-angle-down" aria-hidden="true"></i></span></button></div><div class="dropdown-menu" role="menu"><div id="LanguageSelections" class="dropdown-content"><a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a></div></div></div></div><div class="level-item"><form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;"><div class="field"><div class="control has-icons-left"><input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" /><span class="icon is-small is-left"><i class="fa fa-search"></i></span><button id="SearchButton" type="submit" class="is-hidden"></button></div></div></form></div></div></div></div><div class="fixedContent"><nav class="breadcrumb my-1 px-2 border-bottom" role="navigation"><ul id="TopicBreadcrumbs" /></nav><div class="columns pl-5 pr-5 fixedContent"><div id="ShowHideTOCColumn" class="column is-hidden-tablet"><a id="ShowHideTOC">Show/Hide TOC</a></div><div id="TOCColumn" class="column is-hidden-mobile"><nav class="toc"><ul id="TableOfContents" class="toc-menu" /></nav></div><div id="TopicContent" class="column content is-7"><h1>Developer<wbr />Guide<span id="LSTE2D238A2_0" data-languageSpecificText="cpp=::|nu=."></span>Part<wbr />03Force<wbr />Sync Field</h1><div class="summary">
+             What force sync is, how to convert an AttributesSync into a Synchronizable so you control what it sends during force sync, and how to discard its force sync packet entirely.
+             </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Definition</h2><div id="IDBSection"><strong>Namespace:</strong> <a href="N_Alteruna_Guides.htm">Alteruna.Guides</a><br /><strong>Assembly:</strong> Alteruna.Doc (in Alteruna.Doc.dll) Version: 1.0.0+197d965a098acb48958a825b1bb40aa5467dffd7<div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs"><span class="keyword">public</span> <span class="identifier">bool</span> <span class="identifier">Part03ForceSync</span></code></pre></div></div><h4>Field Value</h4><a href="https://learn.microsoft.com/dotnet/api/system.boolean" target="_self" rel="noopener noreferrer">Boolean</a></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Remarks</h2><div id="IDBCSection">
+             [DocStyle(format=md)]
+             # What is force sync?\n
+             When a new user joins a room, they know nothing about what has already happened in it. Force sync is the event that fixes that: every client already in the room assembles a snapshot of every registered Synchronizable and sends it to the new user in a single force sync reply, so they start from the room's current state rather than from their scene's defaults.\n
+             \n
+             During that snapshot, the framework calls `Serialize` on every Synchronizable as usual, except that `SerializeInfo.ForceSync` is `true`. On the joining user's side, `DisassembleData` is called with `UnserializeInfo.ForceSync` set to `true` as well, so both ends can tell a force sync packet apart from a regular update.\n
+             \n
+             The related events live on [MultiplayerManager](T_Alteruna_Multiplayer_Unity_MultiplayerManager.htm):\n
+             - `OnForceSync` - raised on the clients already in the room, right before they assemble their snapshot.\n
+             - `OnForceSynced` - raised on the same clients once the snapshot has been sent.\n
+             - `OnForceSyncReply` - raised on the joining user when a snapshot has been received and applied.\n
+             \n
+             # AttributesSync and force sync\n
+             [AttributesSync](T_Alteruna_Multiplayer_Unity_AttributesSync.htm) handles force sync for you: every `[SynchronizableField]` is written into the snapshot, whether it has changed or not. On top of that, it has two settings you can change from code:\n
+             - `ForceSyncFields` (on by default) - once the snapshot has been sent, the user with the lowest user ID sends every `[SynchronizableField]` again, to everyone in the room.\n
+             - `ForceSyncMethods` (off by default) - at the same point, that user repeats the last call to every `[SynchronizableMethod]` it has invoked itself, with the same arguments. The method runs again for everyone in the room, not only for the new user.\n
+             \n
+             These settings are enough for most simple components, but they only switch whole categories on or off. They can't leave out a single field, skip the object in the snapshot, or send something different to a joining user. They also send data again to users who already have it.\n
+             \n
+             For full control and better performance, a [Synchronizable](T_Alteruna_Multiplayer_Unity_Synchronizable.htm) is still recommended. You write the data yourself in `AssembleData`, which receives the `SerializeInfo` for the packet being built, so you can see when it is a force sync and decide exactly what to send. Nothing is sent twice, and you control the byte layout.\n
+             \n
+             # Converting an AttributesSync into a Synchronizable\n
+             Take this AttributesSync. It counts how many times something has been hit and plays an effect every time the count goes up:\n
+             \n
+             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">public class HitEffectSync : AttributesSync
+{
+    public ParticleSystem HitEffect;
+
+    [SynchronizableField]
+    public int HitCount;
+
+    private int _lastPlayedHitCount;
+
+    public void Hit()
+    {
+        HitCount++;
+    }
+
+    private void Update()
+    {
+        if (HitCount != _lastPlayedHitCount)
+        {
+            _lastPlayedHitCount = HitCount;
+            HitEffect.Play();
+        }
+    }
+}</code></pre></div></div>
+             \n
+             Here is the same component as a Synchronizable. Three things change:\n
+             - The field loses its `[SynchronizableField]` attribute. Instead, `AssembleData` writes it and `DisassembleData` reads it back, in the same order.\n
+             - AttributesSync commits changed fields for you in its `LateUpdate`. A Synchronizable does not, so you check for changes yourself and call `Commit()`.\n
+             - You call `base.SyncUpdate()` every frame so the Synchronizable can send committed data.\n
+             \n
+             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">public class HitEffectSync : Synchronizable
+{
+    public ParticleSystem HitEffect;
+
+    public int HitCount;
+
+    private int _lastPlayedHitCount;
+    private int _lastCommittedHitCount;
+
+    public void Hit()
+    {
+        HitCount++;
+    }
+
+    public override void AssembleData(Writer writer, SerializeInfo info)
+    {
+        writer.Write(HitCount);
+    }
+
+    public override void DisassembleData(Reader reader, UnserializeInfo info)
+    {
+        HitCount = reader.ReadInt();
+
+        // Don't commit the value we just received back to everyone else.
+        _lastCommittedHitCount = HitCount;
+    }
+
+    private void Update()
+    {
+        if (HitCount != _lastCommittedHitCount)
+        {
+            _lastCommittedHitCount = HitCount;
+            Commit();
+        }
+
+        if (HitCount != _lastPlayedHitCount)
+        {
+            _lastPlayedHitCount = HitCount;
+            HitEffect.Play();
+        }
+
+        base.SyncUpdate();
+    }
+}</code></pre></div></div>
+             \n
+             So far it behaves exactly like the AttributesSync version, force sync included. The difference is that `AssembleData` now has access to `info.ForceSync`.\n
+             \n
+             # Discarding the force sync packet\n
+             Both versions above have a problem when someone joins. The snapshot sends the joining user the current `HitCount`, their `Update` sees a new value, and the hit effect plays for a hit that happened long before they arrived. The count only exists to trigger the effect, so the joining user has no use for it.\n
+             \n
+             To leave the object out of the snapshot, set `info.Discard` to `true` in `AssembleData` and return without writing anything:\n
+             \n
+             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">public override void AssembleData(Writer writer, SerializeInfo info)
+{
+    if (info.ForceSync)
+    {
+        // A joining user doesn't need to replay hits from before they joined.
+        // Discard drops this Synchronizable from the force sync packet entirely.
+        info.Discard = true;
+        return;
+    }
+
+    writer.Write(HitCount);
+}</code></pre></div></div>
+             \n
+             When `Discard` is set, everything this Synchronizable wrote to the packet is removed, including any `[SynchronizableField]` members the base class wrote before calling `AssembleData`. The joining user never receives the object's data, so `DisassembleData` is never called for it and nothing needs to change on the receiving side.\n
+             \n
+             Discarding only affects the force sync packet. Regular updates are sent as before, so the joining user sees the next hit once it happens.\n
+             \n
+             Discard the whole packet only when none of the object's state matters to a joining user. If some of it does, write that part and skip the rest, then check `info.ForceSync` in `DisassembleData` so you read back exactly what was written:\n
+             \n
+             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">public override void AssembleData(Writer writer, SerializeInfo info)
+{
+    writer.Write(Health);
+
+    // Only regular updates carry the hit count.
+    if (!info.ForceSync)
+    {
+        writer.Write(HitCount);
+    }
+}
+
+public override void DisassembleData(Reader reader, UnserializeInfo info)
+{
+    Health = reader.ReadFloat();
+
+    if (!info.ForceSync)
+    {
+        HitCount = reader.ReadInt();
+        _lastCommittedHitCount = HitCount;
+    }
+}</code></pre></div></div>
+             \n
+             For a step-by-step example of upgrading an AttributesSync to a Synchronizable in a small game, see [Example Game Guide Part 03](F_Alteruna_Guides_ExampleGameGuide_Part03UpgradingToSynchronizable.htm).\n
+             \n
+             ---\n
+             [← Back](F_Alteruna_Guides_DeveloperGuide_Part02RemoteProcedureCalls.htm) | [Next →](T_Alteruna_Guides_MigrationGuide.htm)\n
+             </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>See Also</h2><div id="seeAlsoSection"><h4>Reference</h4><div><a href="T_Alteruna_Guides_DeveloperGuide.htm">DeveloperGuide Class</a></div><div><a href="N_Alteruna_Guides.htm">Alteruna.Guides Namespace</a></div></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Definition</a></li><li><a class="quickLink">Remarks</a></li><li><a class="quickLink">See Also</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div class="column">Alteruna Multiplayer v2.1.3r18<p>Copyright © 2026 Alteruna AB</p> 
+				</div><div class="column"> 
+				</div></div></footer></div><script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script></body></html>

@@ -688,3 +688,42 @@ function SearchForKeywords(keywords, fileInfo)
 
 	return content;
 }
+
+//===============================================================================================================
+// Framework comparison tabs (used by the multiplayer migration guide to show one framework's code sample at a
+// time instead of dumping every framework into a single code block).
+//
+// Markup: a ".alteruna-compare-tabs" div containing one ".alteruna-compare-btn" button per framework, followed
+// immediately by one Sandcastle code snippet (the ".codeSnippet" div <code> renders as) per button, in the same
+// order. The buttons and code snippets are matched up by position, not by id, so this works regardless of how
+// many comparison groups are on a page.
+
+// Called by a comparison tab button's onclick. index is the button's zero based position in its group.
+function AlterunaShowComparisonTab(button, index)
+{
+    var group = $(button).closest(".alteruna-compare-tabs");
+
+    // Toggle the selected tab's color on click; it stays selected until another tab in the group is pressed.
+    group.find(".alteruna-compare-btn").removeClass("active").attr("aria-pressed", "false");
+    $(button).addClass("active").attr("aria-pressed", "true");
+
+    var panelCount = group.find(".alteruna-compare-btn").length;
+
+    group.nextAll(".codeSnippet").slice(0, panelCount).addClass("is-hidden").eq(index).removeClass("is-hidden");
+}
+
+// Hide every framework's code snippet except the first (active) one for each comparison tab group on the page.
+$(function ()
+{
+    $(".alteruna-compare-tabs").each(function ()
+    {
+        var group = $(this);
+        var buttons = group.find(".alteruna-compare-btn");
+        var panelCount = buttons.length;
+
+        buttons.attr("aria-pressed", "false").removeClass("active");
+        buttons.first().addClass("active").attr("aria-pressed", "true");
+
+        group.nextAll(".codeSnippet").slice(1, panelCount).addClass("is-hidden");
+    });
+});

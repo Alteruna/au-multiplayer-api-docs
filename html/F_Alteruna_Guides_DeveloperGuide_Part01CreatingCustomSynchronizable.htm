@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html ><html lang="en-US"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="shortcut icon" href="../icons/favicon.ico" /><link rel="stylesheet" href="../css/bulma.css" /><link rel="stylesheet" href="../css/font-awesome.min.css" /><link rel="stylesheet" href="../css/presentationStyle.css" /><link rel="stylesheet" href="../css/vs.min.css" /><script src="../scripts/jquery-3.5.1.min.js"></script><script src="../scripts/clipboard.min.js"></script><script src="../scripts/highlight.min.js"></script><script src="../scripts/presentationStyle.js"></script><title>DeveloperGuide.Part01CreatingCustomSynchronizable Field</title><meta name="Title" content="Part01CreatingCustomSynchronizable" /><meta name="Help.Id" content="F:Alteruna.Guides.DeveloperGuide.Part01CreatingCustomSynchronizable" /><meta name="Help.ContentType" content="Reference" /><meta name="container" content="Alteruna.Guides" /><meta name="guid" content="F_Alteruna_Guides_DeveloperGuide_Part01CreatingCustomSynchronizable" /><meta name="Description" content="An in depth guide of how to create a Synchronizable if AttributesSync doesn't cut it." /><meta name="tocFile" content="../toc/IDAADA.xml" /></head><body><div class="fixedLayout"><div id="Header" class="fixedHeader"><div class="pageHeader level mb-0 py-2 px-4"><div id="TitleContainer" class="level-left"><div id="DocumentationTitle" class="level-item">Alteruna Multiplayer Docs</div></div><div id="LangFilterSearchContainer" class="level-right"><div class="level-item"><div class="dropdown is-hoverable"><div class="dropdown-trigger"><button class="button" aria-haspopup="true" aria-controls="dropdown-menu"><span id="CurrentLanguage"></span><span class="icon is-small"><i class="fa fa-angle-down" aria-hidden="true"></i></span></button></div><div class="dropdown-menu" role="menu"><div id="LanguageSelections" class="dropdown-content"><a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a></div></div></div></div><div class="level-item"><form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;"><div class="field"><div class="control has-icons-left"><input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" /><span class="icon is-small is-left"><i class="fa fa-search"></i></span><button id="SearchButton" type="submit" class="is-hidden"></button></div></div></form></div></div></div></div><div class="fixedContent"><nav class="breadcrumb my-1 px-2 border-bottom" role="navigation"><ul id="TopicBreadcrumbs" /></nav><div class="columns pl-5 pr-5 fixedContent"><div id="ShowHideTOCColumn" class="column is-hidden-tablet"><a id="ShowHideTOC">Show/Hide TOC</a></div><div id="TOCColumn" class="column is-hidden-mobile"><nav class="toc"><ul id="TableOfContents" class="toc-menu" /></nav></div><div id="TopicContent" class="column content is-7"><h1>Developer<wbr />Guide<span id="LST139AC506_0" data-languageSpecificText="cpp=::|nu=."></span>Part<wbr />01Creating<wbr />Custom<wbr />Synchronizable Field</h1><div class="summary">
+            	An in depth guide of how to create a Synchronizable if AttributesSync doesn't cut it.
+             </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Definition</h2><div id="IDBSection"><strong>Namespace:</strong> <a href="N_Alteruna_Guides.htm">Alteruna.Guides</a><br /><strong>Assembly:</strong> Alteruna.Doc (in Alteruna.Doc.dll) Version: 1.0.0+197d965a098acb48958a825b1bb40aa5467dffd7<div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs"><span class="keyword">public</span> <span class="identifier">bool</span> <span class="identifier">Part01CreatingCustomSynchronizable</span></code></pre></div></div><h4>Field Value</h4><a href="https://learn.microsoft.com/dotnet/api/system.boolean" target="_self" rel="noopener noreferrer">Boolean</a></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Remarks</h2><div id="IDBCSection">
+             [DocStyle(format=md)]
+             # How do I build my own Synchronizable?\n
+             Alteruna Multiplayer supports synchronization of virtually any data type or user-defined class as long as\n
+             they can be serialized as a stream of bytes. Alteruna Multiplayer provides a framework for reading and\n
+             writing the most common primitive data types in C#. Sending data in a series of bytes,\n
+             opens up for more complex data types to be synchronized as well.\n
+            
+             ## Example of a Synchronizable\n
+             Here is a detailed example of a Synchronizable.\n
+             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">public class ExampleSynchronizable : Synchronizable
+{
+       // Data to be synchronized with other players in our playroom.
+       public float SynchronizedFloat = 3.0f;
+
+       // Used to store the previous version of our data so that we know when it has changed.
+       private float _oldSynchronizedFloat;
+       public override void DisassembleData(Reader reader, UnserializeInfo info)
+       {
+           // Set our data to the updated value we have received from another player.
+           SynchronizedFloat = reader.ReadFloat();
+
+           // Save the new data as our old data, otherwise we will immediately think it changed again.
+           _oldSynchronizedFloat = SynchronizedFloat;
+       }
+
+       public override void AssembleData(Writer writer, SerializeInfo info)
+       {
+           // Write our data so that it can be sent to the other players in our playroom.
+           writer.Write(SynchronizedFloat);
+       }
+
+       private void Update()
+       {
+           // If the value of our float has changed, sync it with the other players in our playroom.
+           if (SynchronizedFloat != _oldSynchronizedFloat)
+           {
+               // Store the updated value
+               _oldSynchronizedFloat = SynchronizedFloat;
+
+               // Tell Alteruna Multiplayer that we want to commit our data.
+               Commit();
+           }
+
+           // Update the Synchronizable
+           base.SyncUpdate();
+       }
+   }</code></pre></div></div><sub>Code snippet.1 shows an example of a custom Synchronizable that is included in the Unity package.</sub>\n
+            
+             ## Example walkthrough\n
+             The ExampleSynchronizable has a floating point variable that it wishes to synchronize between users.\n
+             The first step is to inherit from Alteruna.[Synchronizable](T_Alteruna_Multiplayer_Unity_Synchronizable.htm).\n
+             The Synchronizable base class enables developers to rapidly implement custom synchronization of any data type.\n
+             In the code example, the `Update()` method is used to regularly check for changes of the component’s state.\n
+             If a change is detected, the `Commit()` method should be invoked to inform the Alteruna Multiplayer framework to\n
+             synchronize the data over the network to other users. In the example (Code snippet 1),\n
+             this occurs when the floating point variable's value has changed.\n
+             Requesting a component to be synchronized using the `Commit()` method, will notify the framework that\n
+             the component's data should be sent, in its new state, to the other users. The Alteruna Multiplayer framework\n
+             updates all of its synchronizable components in regular intervals. If a component has invoked the Commit() method\n
+             the framework will request the component to assemble its data by invoking the overridden `AssembleData()` method.\n
+             In `AssembleData()` the component must write all parts of its state to the supplied Writer instance.\n
+             In the same fashion, the framework will invoke the overridden `DisassembleData()` when it receives\n
+             an updated state for a given component on the network. Differently from `AssembleData()`,\n
+             the framework will supply a Reader instance that may be used to read all parts of the component’s state.\n
+             *NOTE: Both the Reader and the Writer class have methods for reading/writing most common data types from\n
+             the network stream.*\n
+            
+             # Modifying synchronized attributes\n
+             Synchronizing components over the network may result in conflicts when multiple users attempt to either\n
+             modify and/or access the data belonging to a single object. Alteruna Multiplayer provides an API for\n
+             synchronizing access and acquiring exclusive ownership to Synchronizables.\n
+             Alteruna Multiplayer ensures that only one user can have ownership at a time,\n
+             and an ownership can be acquired for any period of time.\n
+             
+             The concept of acquired ownership is there to support developers with atomic access but does not in itself\n
+             protect access to any attributes of the synchronizable. The developer needs to acquire,\n
+             modify and later release the ownership of a synchronizable and ensure that modifications are encapsulated\n
+             within a check for ownership.\n
+             <img src="https://user-images.githubusercontent.com/62545992/172625629-a4bca915-935b-45df-bf3b-668d9392254e.png" />\n
+             <sub>Code snippet.2 shows a basic example of requesting ownership at start, update the position of the
+             object and immediately release the ownership.</sub>\n\n
+            
+             Taking ownership can be performed in two ways. Either trying to take ownership at once, or waiting for\n
+             an infinite amount of time until other requesters have given up their ownership and taking it as soon as it\n
+             becomes available.\n\n
+             
+             *Please note that using the ownership API is not mandatory, it is solely up to the application developer\n
+             to decide if and when it is needed in order to protect access to the synchronizable’s attributes.*\n
+            
+             ---\n
+             [← Back](T_Alteruna_Guides_DeveloperGuide.htm) | [Next →](F_Alteruna_Guides_DeveloperGuide_Part02RemoteProcedureCalls.htm)
+             </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>See Also</h2><div id="seeAlsoSection"><h4>Reference</h4><div><a href="T_Alteruna_Guides_DeveloperGuide.htm">DeveloperGuide Class</a></div><div><a href="N_Alteruna_Guides.htm">Alteruna.Guides Namespace</a></div></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Definition</a></li><li><a class="quickLink">Remarks</a></li><li><a class="quickLink">See Also</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div class="column">Alteruna Multiplayer v2.1.3r18<p>Copyright © 2026 Alteruna AB</p> 
+				</div><div class="column"> 
+				</div></div></footer></div><script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script></body></html>
