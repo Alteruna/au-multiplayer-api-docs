@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html >
+<html lang="en-US"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><link href="../icons/favicon.ico" rel="shortcut icon"/><link href="../css/bulma.css" rel="stylesheet"/><link href="../css/font-awesome.min.css" rel="stylesheet"/><link href="../css/presentationStyle.css" rel="stylesheet"/><link href="../css/vs.min.css" rel="stylesheet"/><script src="../scripts/jquery-3.5.1.min.js"></script><script src="../scripts/clipboard.min.js"></script><script src="../scripts/highlight.min.js"></script><script src="../scripts/presentationStyle.js"></script><title>HelloWorldGuide</title><meta content="HelloWorldGuide" name="Title"/><meta content="T:Alteruna.Guides.HelloWorldGuide" name="Help.Id"/><meta content="Reference" name="Help.ContentType"/><meta content="Alteruna.Guides" name="container"/><meta content="T_Alteruna_Guides_HelloWorldGuide" name="guid"/><meta content="A minimal Alteruna Multiplayer program for every supported platform: Unity, Godot, C# (.NET), C++ and C." name="Description"/><meta content="../toc/IDDA.xml" name="tocFile"/></head><body><div class="fixedLayout"><div class="fixedHeader" id="Header"><div class="pageHeader level mb-0 py-2 px-4"><div class="level-left" id="TitleContainer"><div class="level-item" id="DocumentationTitle">Alteruna Multiplayer Docs</div></div><div class="level-right" id="LangFilterSearchContainer"><div class="level-item"><div class="dropdown is-hoverable"><div class="dropdown-trigger"><button aria-controls="dropdown-menu" aria-haspopup="true" class="button"><span id="CurrentLanguage"></span><span class="icon is-small"><i aria-hidden="true" class="fa fa-angle-down"></i></span></button></div><div class="dropdown-menu" role="menu"><div class="dropdown-content" id="LanguageSelections"><a class="dropdown-item languageFilterItem" data-languageid="cs">C#</a></div></div></div></div><div class="level-item"><form action="#" id="SearchForm" onsubmit="TransferToSearchPage(); return false;"><div class="field"><div class="control has-icons-left"><input class="input" id="SearchTerms" maxlength="200" placeholder="Search" type="text"/><span class="icon is-small is-left"><i class="fa fa-search"></i></span><button class="is-hidden" id="SearchButton" type="submit"></button></div></div></form></div></div></div></div><div class="fixedContent"><nav class="breadcrumb my-1 px-2 border-bottom" role="navigation"><ul id="TopicBreadcrumbs"></ul></nav><div class="columns pl-5 pr-5 fixedContent"><div class="column is-hidden-tablet" id="ShowHideTOCColumn"><a id="ShowHideTOC">Show/Hide TOC</a></div><div class="column is-hidden-mobile" id="TOCColumn"><nav class="toc"><ul class="toc-menu" id="TableOfContents"></ul></nav></div><div class="column content is-7" id="TopicContent"><h1>Hello<wbr/>World<wbr/>Guide</h1><div class="summary"> A minimal Alteruna Multiplayer program for every supported platform: Unity, Godot, C# (.NET), C++ and C. </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span></h2><div id="IDBCSection"> <h1>Hello world</h1> <p>This guide builds the same small program on every platform Alteruna Multiplayer supports. Two copies of the program find each other on the local network, join the same room, and say hello to each other by synchronizing a small piece of state. Pick your platform in the tabs; the choice applies per section.</p> <p>You don't need an account to try it. The examples use a made-up project ID with authentication turned off, which works on a local network. For play over the internet, see <a href="#online">Going online</a> below.</p> <h2>1. Install</h2> <div class="alteruna-compare-tabs"> <button class="alteruna-compare-btn active" onclick="AlterunaShowComparisonTab(this,0)" type="button">Unity</button> <button class="alteruna-compare-btn" onclick="AlterunaShowComparisonTab(this,1)" type="button">Godot</button> <button class="alteruna-compare-btn" onclick="AlterunaShowComparisonTab(this,2)" type="button">C# (.NET)</button> <button class="alteruna-compare-btn" onclick="AlterunaShowComparisonTab(this,3)" type="button">C++</button> <button class="alteruna-compare-btn" onclick="AlterunaShowComparisonTab(this,4)" type="button">C</button> </div> <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle"> </span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-plaintext">// In the Unity Editor: Window → Package Manager → + → Add package from git URL
+https://github.com/Alteruna/multiplayer-sdk-unity-package.git</code></pre></div></div> <span></span> <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle"> </span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-plaintext"># Download alteruna-multiplayer-godot-&lt;version&gt;.zip from
+# https://github.com/Alteruna/multiplayer-releases/releases and extract it into your project,
+# so addons/alteruna sits in the project root. Restart the editor.
+# Then create a scene with a Node, and attach hello_world.gd to it.</code></pre></div></div> <span></span> <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle"> </span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-plaintext">dotnet new console -n HelloWorld
+cd HelloWorld
+dotnet add package Alteruna.Multiplayer</code></pre></div></div> <span></span> <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle"> </span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-plaintext"># Download alteruna-multiplayer-cpp-&lt;version&gt;-&lt;platform&gt;.zip from
+# https://github.com/Alteruna/multiplayer-releases/releases and extract it.
+# CMakeLists.txt next to hello.cpp:
+cmake_minimum_required(VERSION 3.16)
+project(hello CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+
+find_package(Alteruna REQUIRED)
+
+add_executable(hello hello.cpp)
+target_link_libraries(hello PRIVATE Alteruna::Multiplayer)
+
+# Copy the shared library next to the executable.
+add_custom_command(TARGET hello POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    $&lt;TARGET_FILE:Alteruna::Multiplayer&gt; $&lt;TARGET_FILE_DIR:hello&gt;)
+
+# Configure with: cmake -S . -B build -DAlteruna_DIR=&lt;extracted zip&gt;/cmake</code></pre></div></div> <span></span> <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle"> </span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-plaintext"># Download alteruna-multiplayer-cpp-&lt;version&gt;-&lt;platform&gt;.zip from
+# https://github.com/Alteruna/multiplayer-releases/releases and extract it.
+# The same zip serves C and C++. CMakeLists.txt next to hello.c:
+cmake_minimum_required(VERSION 3.16)
+project(hello C)
+
+find_package(Alteruna REQUIRED)
+
+add_executable(hello hello.c)
+target_link_libraries(hello PRIVATE Alteruna::Multiplayer)
+
+# Copy the shared library next to the executable.
+add_custom_command(TARGET hello POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    $&lt;TARGET_FILE:Alteruna::Multiplayer&gt; $&lt;TARGET_FILE_DIR:hello&gt;)
+
+# Configure with: cmake -S . -B build -DAlteruna_DIR=&lt;extracted zip&gt;/cmake</code></pre></div></div> <span></span> <h2>2. Write the program</h2> <p>The Godot, C#, C++ and C versions are the same program: run with <span class="c">host</span>, it opens a room and announces it on the local network; run without arguments, it joins the first room it finds. Each program owns a synchronizable, an object with an id that writes its state in <span class="c">Serialize</span> and reads it in <span class="c">Unserialize</span>. Here the state is a single line of text, which is printed when it arrives.</p> <div class="alteruna-compare-tabs"> <button class="alteruna-compare-btn active" onclick="AlterunaShowComparisonTab(this,0)" type="button">Unity</button> <button class="alteruna-compare-btn" onclick="AlterunaShowComparisonTab(this,1)" type="button">Godot</button> <button class="alteruna-compare-btn" onclick="AlterunaShowComparisonTab(this,2)" type="button">C# (.NET)</button> <button class="alteruna-compare-btn" onclick="AlterunaShowComparisonTab(this,3)" type="button">C++</button> <button class="alteruna-compare-btn" onclick="AlterunaShowComparisonTab(this,4)" type="button">C</button> </div> <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">using Alteruna.Multiplayer.Unity;
+using Alteruna.Multiplayer.Unity.EventArgument;
+using UnityEngine;
+
+// Add this component to any GameObject in a scene that has a Multiplayer Manager.
+public class HelloWorld : AttributesSync
+{
+    private void Start()
+    {
+        // Multiplayer is the scene's MultiplayerManager.
+        Multiplayer.OnRoomJoined.AddListener(OnRoomJoined);
+    }
+
+    private void OnRoomJoined(RoomJoinedEvent e)
+    {
+        // Runs SayHello on every user in the room, including this one.
+        BroadcastRemoteMethod(nameof(SayHello), "Hello world from " + e.User.Name + "!");
+    }
+
+    [SynchronizableMethod]
+    private void SayHello(string text)
+    {
+        Debug.Log(text);
+    }
+}</code></pre></div></div> <span></span> <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">GDScript</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-plaintext">extends Node
+
+# Run the project twice: once with "host" as argument (godot -- host), once without.
+var service := AlterunaService.new()
+var is_host := "host" in OS.get_cmdline_user_args() or "host" in OS.get_cmdline_args()
+var text := "Hello world from %s!" % ("host" if is_host else "client")
+
+
+func _ready() -&gt; void:
+    add_child(service)
+
+    # Peers need the same project ID. With authenticate off, any GUID works on a local network.
+    service.project_id = "5b0a7e3c-9f2d-4c61-8e4a-2d7f1c9b3a10"
+    service.authenticate = false
+
+    # "hello" is synchronized between peers: get_state sends our text, set_state receives theirs.
+    service.register_synchronizable("hello", func(): return text, func(value): print(value))
+    service.room_joined.connect(func(_room, _me): service.sync("hello"))
+    service.room_list_updated.connect(_on_room_list_updated)
+
+    # The host announces its room on the local network; clients listen for it.
+    service.start()
+    if is_host:
+        service.open_port(20000, AlterunaService.DISCOVERY_BROADCAST)
+        service.join_own_room()
+    else:
+        service.open_port(0, AlterunaService.DISCOVERY_LISTEN)
+
+
+# A client joins the first room it discovers.
+func _on_room_list_updated() -&gt; void:
+    var rooms := service.get_rooms()
+    if not is_host and not service.in_room() and not rooms.is_empty():
+        service.join_room(rooms[0].session_id)</code></pre></div></div> <span></span> <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">using System;
+using System.Threading;
+using Alteruna.Multiplayer.Core;
+using Alteruna.Multiplayer.Core.MethodArguments;
+using Alteruna.Multiplayer.Core.Packets;
+
+// Run "HelloWorld host" in one terminal and "HelloWorld" in another.
+class HelloWorld : ServiceListener, ISynchronizableElement, IAdaptiveSerializable
+{
+    static readonly Service Service = new Service();
+    static bool _isHost;
+    string _text;
+
+    // The id identifies this object on every peer.
+    public Guid CodecID =&gt; new Guid("8f1c2a6e-3d47-4b8e-9a21-6f0e5c7d1b01");
+    public IAdaptiveSerializable Synchronizable =&gt; this;
+
+    public void Serialize(ITransportStreamWriter writer, SerializeInfo info) =&gt; writer.Put(_text);
+    public void Unserialize(ITransportStreamReader reader, UnserializeInfo info) =&gt; Console.WriteLine(reader.GetString());
+
+    static void Main(string[] args)
+    {
+        _isHost = args.Length &gt; 0 &amp;&amp; args[0] == "host";
+        var hello = new HelloWorld { _text = "Hello world from " + (_isHost ? "host" : "client") + "!" };
+        hello.AddSynchronizable(hello);
+
+        // Peers need the same project ID. auth: false allows any GUID on a local network.
+        Service.VerifyProjectID("5b0a7e3c-9f2d-4c61-8e4a-2d7f1c9b3a10", null, false);
+        Service.Start(hello);
+
+        // The host announces its room on the local network; clients listen for it.
+        Service.OpenPort(new Service.OpenPortArgs
+        {
+            Port = _isHost ? (ushort)20000 : (ushort)0,
+            Discovery = _isHost
+                ? Service.OpenPortArgs.DiscoveryMode.BroadcastAvailability
+                : Service.OpenPortArgs.DiscoveryMode.AcceptBroadcasts
+        });
+
+        if (_isHost) Service.JoinOwnRoom(new RoomArgs());
+
+        while (true)
+        {
+            Service.Update(); // sends and receives network data, fires callbacks
+            Thread.Sleep(8);  // roughly 120 Hz
+        }
+    }
+
+    // A client joins the first room it discovers.
+    public override void OnRoomListUpdated(Service service)
+    {
+        if (!_isHost &amp;&amp; !service.InRoomOrJoining &amp;&amp; service.AvailableRooms.Count &gt; 0)
+            service.JoinRoom(service.AvailableRooms[0]);
+    }
+
+    // Send our text to everyone in the room.
+    public override void OnRoomJoined(Room room, User me) =&gt; Service.Sync(this);
+}</code></pre></div></div> <span></span> <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C++</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cpp">// Run "hello host" in one terminal and "hello" in another.
+#include &lt;alteruna.hpp&gt;
+
+#include &lt;chrono&gt;
+#include &lt;cstdio&gt;
+#include &lt;string&gt;
+#include &lt;thread&gt;
+
+// The id identifies this object on every peer.
+const auto HELLO_ID = alteruna::Guid::parse("8f1c2a6e-3d47-4b8e-9a21-6f0e5c7d1b01");
+
+struct HelloWorld : alteruna::Listener, alteruna::Synchronizable {
+    alteruna::Service* service = nullptr;
+    bool is_host = false;
+    std::string text;
+
+    bool serialize(alteruna::Writer&amp; w, uint8_t, bool) override { w.put(text); return true; }
+    void unserialize(alteruna::Reader&amp; r, uint8_t, bool, uint32_t) override { std::printf("%s\n", r.get_string().c_str()); }
+
+    // A client joins the first room it discovers.
+    void on_room_list_updated() override {
+        auto rooms = service-&gt;rooms();
+        if (!is_host &amp;&amp; !service-&gt;in_room() &amp;&amp; !rooms.empty()) service-&gt;join_room(rooms[0].session_id);
+    }
+
+    // Send our text to everyone in the room.
+    void on_room_joined(const alteruna::RoomInfo&amp;, const alteruna::UserInfo&amp;) override { service-&gt;sync(HELLO_ID); }
+};
+
+int main(int argc, char** argv) {
+    HelloWorld hello;
+    hello.is_host = argc &gt; 1 &amp;&amp; std::string(argv[1]) == "host";
+    hello.text = std::string("Hello world from ") + (hello.is_host ? "host" : "client") + "!";
+
+    alteruna::Service service(&amp;hello);
+    hello.service = &amp;service;
+
+    // Peers need the same project ID. auth = false allows any GUID on a local network.
+    service.verify_project_id("5b0a7e3c-9f2d-4c61-8e4a-2d7f1c9b3a10", {}, false);
+    service.start();
+    service.register_synchronizable(HELLO_ID, hello);
+
+    // The host announces its room on the local network; clients listen for it.
+    alteruna::PortConfig port;
+    port.port = hello.is_host ? 20000 : 0;
+    port.discovery = hello.is_host ? AU_DISCOVERY_BROADCAST_AVAILABILITY : AU_DISCOVERY_ACCEPT_BROADCASTS;
+    service.open_port(port);
+
+    if (hello.is_host) service.join_own_room();
+
+    for (;;) {
+        service.update();                                           // sends and receives network data, fires callbacks
+        std::this_thread::sleep_for(std::chrono::milliseconds(8)); // roughly 120 Hz
+    }
+}</code></pre></div></div> <span></span> <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-c">/* Run "hello host" in one terminal and "hello" in another. */
+#include &lt;alteruna.h&gt;
+
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#ifdef _WIN32
+#include &lt;windows.h&gt;
+#define sleep_ms(ms) Sleep(ms)
+#else
+#include &lt;unistd.h&gt;
+#define sleep_ms(ms) usleep((ms) * 1000)
+#endif
+
+static au_service* service;
+static au_guid hello_id;
+static int is_host;
+static char text[64];
+
+static int32_t serialize(void* user_data, au_writer* writer, uint8_t lod, int32_t force_sync)
+{
+    au_writer_put_string(writer, text);
+    return 0;
+}
+
+static void unserialize(void* user_data, au_reader* reader, uint8_t lod, int32_t force_sync, uint32_t length)
+{
+    printf("%s\n", au_reader_get_string(reader));
+}
+
+/* A client joins the first room it discovers. */
+static void on_room_list_updated(void* user_data)
+{
+    au_room_info room;
+    if (!is_host &amp;&amp; au_service_in_room(service) == 0 &amp;&amp; au_service_get_room(service, 0, &amp;room) == AU_OK)
+        au_service_join_room(service, room.session_id, 0);
+}
+
+/* Send our text to everyone in the room. */
+static void on_room_joined(void* user_data, const au_room_info* room, const au_user_info* me)
+{
+    au_service_sync(service, &amp;hello_id, AU_USER_ALL, AU_RELIABLE);
+}
+
+int main(int argc, char** argv)
+{
+    is_host = argc &gt; 1 &amp;&amp; strcmp(argv[1], "host") == 0;
+    snprintf(text, sizeof(text), "Hello world from %s!", is_host ? "host" : "client");
+
+    au_callbacks callbacks = {0};
+    callbacks.on_room_list_updated = on_room_list_updated;
+    callbacks.on_room_joined = on_room_joined;
+    service = au_service_create(AU_DEVICE_CLIENT, &amp;callbacks);
+
+    /* Peers need the same project ID. auth = 0 allows any GUID on a local network. */
+    au_service_verify_project_id(service, "5b0a7e3c-9f2d-4c61-8e4a-2d7f1c9b3a10", NULL, 0);
+    au_service_start(service, NULL);
+
+    /* The id identifies this object on every peer. */
+    au_guid_parse("8f1c2a6e-3d47-4b8e-9a21-6f0e5c7d1b01", &amp;hello_id);
+    au_service_register_synchronizable(service, &amp;hello_id, serialize, unserialize, NULL);
+
+    /* The host announces its room on the local network; clients listen for it. */
+    au_port_config port;
+    au_port_config_init(&amp;port);
+    port.port = is_host ? 20000 : 0;
+    port.discovery = is_host ? AU_DISCOVERY_BROADCAST_AVAILABILITY : AU_DISCOVERY_ACCEPT_BROADCASTS;
+    au_service_open_port(service, &amp;port, NULL);
+
+    if (is_host) au_service_join_own_room(service, NULL);
+
+    for (;;) {
+        au_service_update(service); /* sends and receives network data, fires callbacks */
+        sleep_ms(8);                /* roughly 120 Hz */
+    }
+}</code></pre></div></div> <span></span> <h2>3. Run it</h2> <p>Start two copies on the same machine or on the same local network.</p> <div class="alteruna-compare-tabs"> <button class="alteruna-compare-btn active" onclick="AlterunaShowComparisonTab(this,0)" type="button">Unity</button> <button class="alteruna-compare-btn" onclick="AlterunaShowComparisonTab(this,1)" type="button">Godot</button> <button class="alteruna-compare-btn" onclick="AlterunaShowComparisonTab(this,2)" type="button">C# (.NET)</button> <button class="alteruna-compare-btn" onclick="AlterunaShowComparisonTab(this,3)" type="button">C++</button> <button class="alteruna-compare-btn" onclick="AlterunaShowComparisonTab(this,4)" type="button">C</button> </div> <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle"> </span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-plaintext">// 1. In a new scene, right click in the Hierarchy: Alteruna → Multiplayer Manager.
+// 2. Add the Room Menu prefab (Alteruna Multiplayer SDK → Prefabs → Room Menu).
+// 3. Add the HelloWorld component to any GameObject.
+// 4. Make a build (File → Build And Run) and also press Play in the Editor.
+// 5. Press Start in the Room Menu in one of them, and Join the room in the other.
+// The Console of each instance logs "Hello world from &lt;name&gt;!" for every user that joins.</code></pre></div></div> <span></span> <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle"> </span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-plaintext">godot --path . -- host     # first terminal
+godot --path .             # second terminal
+# Or in the editor: Debug → Customize Run Instances, run 2 instances, and give one the argument "host".</code></pre></div></div> <span></span> <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle"> </span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-plaintext">dotnet run -- host     # first terminal
+dotnet run             # second terminal</code></pre></div></div> <span></span> <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle"> </span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-plaintext">cmake --build build
+./build/hello host     # first terminal (build\Debug\hello.exe host on Windows)
+./build/hello          # second terminal</code></pre></div></div> <span></span> <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle"> </span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-plaintext">cmake --build build
+./build/hello host     # first terminal (build\Debug\hello.exe host on Windows)
+./build/hello          # second terminal</code></pre></div></div> <span></span> <p>The host prints <span class="c">Hello world from client!</span> and the client prints <span class="c">Hello world from host!</span>.</p> <p>The client's hello is sent by its <span class="c">Sync</span> call when it joins the room. The host never sends anything explicitly: when a user joins a room, everyone already in it sends the newcomer the current state of their synchronizables (a <a href="F_Alteruna_Guides_DeveloperGuide_Part03ForceSync.htm">force sync</a>), so the host's text arrives on its own.</p> <h2>How it works</h2> <ul> <li><b>Project ID.</b> Peers only connect to peers with the same project ID. With authentication off (<span class="c">auth = false</span>), any GUID works on a local network.</li> <li><b>Update loop.</b> Nothing happens in the background: sending, receiving and every callback happen in <span class="c">Update</span> (<span class="c">update</span>, <span class="c">au_service_update</span>). Call it often; the examples run it at roughly 120 Hz. Unity's Multiplayer Manager does this for you.</li> <li><b>Synchronizables.</b> A synchronizable is matched across peers by its id, so every peer registers it with the same id. <span class="c">Sync</span> serializes it and sends it to the others in the room. In Unity, an <span class="c">AttributesSync</span> component does this for you: <span class="c">[SynchronizableField]</span> fields are synchronized automatically, and a <span class="c">[SynchronizableMethod]</span> runs on every user when called with <span class="c">BroadcastRemoteMethod</span>, including the sender.</li> <li><b>Discovery.</b> The host broadcasts its room on the local network and clients listen for it. Use <span class="c">AddKnownDevice</span> (<span class="c">add_known_device</span>, <span class="c">au_service_add_known_device</span>) to connect to an address directly instead.</li> </ul> <h2 id="online">Going online</h2> <p>To play over the internet, register a project in the <a href="https://portal.mp2.alteruna.com/">Alteruna Multiplayer portal</a>, use its project ID with authentication on, and join a room through Alteruna's servers, for example with <span class="c">JoinOnDemandRoom</span> (<span class="c">join_on_demand_room</span>, <span class="c">au_service_join_on_demand_room</span>) instead of hosting one locally. In Unity, register the license under <span class="c">Window → Alteruna → Register license</span>; the Room Menu then lists online rooms.</p> <h2>Next steps</h2> <ul> <li>Unity: the <a href="T_Alteruna_Guides_UserGuide.htm">User Guide</a> and the <a href="T_Alteruna_Guides_ExampleGameGuide.htm">Example Game Guide</a>.</li> <li>Synchronizing state: <a href="T_Alteruna_Guides_DeveloperGuide.htm">Developer Guide</a>. Outside Unity, the same synchronizable pattern scales to any state: write more fields in <span class="c">Serialize</span> and read them back in the same order.</li> <li>C and C++: the <span class="c">README.md</span> and <span class="c">samples/cpp</span> in the SDK zip.</li> </ul> <h3>Discord</h3> <p>Join the <a href="https://discord.gg/QT8KTe2Hzk">Alteruna Discord server</a> to find additional resources and other developers to chat with!</p> </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>See Also</h2><div id="seeAlsoSection"><h4>Reference</h4><div><a href="N_Alteruna_Guides.htm">Alteruna.Guides Namespace</a></div><div><a href="T_Alteruna_Guides_UserGuide.htm">UserGuide</a></div><div><a href="T_Alteruna_Guides_DeveloperGuide.htm">DeveloperGuide</a></div></div></div><div class="column is-hidden-mobile" id="InThisArticleColumn"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul class="menu-list" id="InThisArticleMenu"><li><a class="quickLink">Definition</a></li><li><a class="quickLink">Remarks</a></li><li><a class="quickLink">See Also</a></li></ul></nav></div></div></div><footer class="footer border-top py-3 fixedFooter" id="PageFooter"><div class="columns"><div class="column">Alteruna Multiplayer v2.1.3r26<p>Copyright © 2026 Alteruna AB</p>  </div><div class="column">  </div></div></footer></div><script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script></body></html>
